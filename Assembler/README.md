@@ -80,53 +80,6 @@ Unlike the Logisim output, the Quartus memory files:
 
 ---
 
-## Assembly Flow
-
-```
-Assembly Source (.asm)
-          │
-          ▼
-      Two-Pass Assembler
-          │
-          ├──────────────┐
-          ▼              ▼
- Logisim Memory      Quartus Memory
-    Images              Images
-          │              │
-          ▼              ▼
-     Logisim CPU     FPGA CPU
-```
-
----
-
-## Integration
-
-The assembler is part of the complete software toolchain for the processor.
-
-```
-C-like Source Code
-        │
-        ▼
-Compiler
-        │
-        ▼
-Assembly (.asm)
-        │
-        ▼
-Assembler
-        │
-        ├─────────────┐
-        ▼             ▼
- Logisim Files    FPGA Memory Images
-                        │
-                        ▼
-                 16-Bit FPGA Processor
-```
-
-The same assembly program can be assembled for both the Logisim reference implementation and the FPGA implementation without modification.
-
----
-
 ## Project Status
 
 The assembler currently supports the complete instruction set implemented by the processor, including:
