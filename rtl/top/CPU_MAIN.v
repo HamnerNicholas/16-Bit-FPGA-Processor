@@ -7,7 +7,7 @@ module CPU_MAIN #(
     parameter INT_LINES_WIDTH = 8
 )(
     input clk,
-    input rst,
+    input notrst,
     input [INT_LINES_WIDTH-1:0] interrupts,
 	 input CLOCK_50,
 
@@ -27,6 +27,8 @@ module CPU_MAIN #(
     output reg          VGA_HS,
 	 output reg          VGA_VS
 );
+
+	 wire rst = ~notrst;
 
 
     // Instruction fields
@@ -64,7 +66,7 @@ module CPU_MAIN #(
 			 .DIVIDER(1_000_000)
 		) divider (
 			 .clk(MAX10_CLK1_50),
-			 .rst(rst),
+
 			 .slow_clk(cpu_clk)
 		);
 
@@ -254,7 +256,7 @@ module CPU_MAIN #(
         .HEX1(HEX1)
     );
 	 
-	assign LEDR = display_debug;
+	assign LEDR = accOut;
 	
 	// VGA STUFF
 	wire [31:0]    col, row;
