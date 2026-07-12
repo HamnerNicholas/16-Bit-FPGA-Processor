@@ -13,8 +13,8 @@ Two programming languages are supported:
 
 | Document | Description |
 |----------|-------------|
-| [High-Level Language Reference](high-level/language-reference.md) | Syntax and features of the compiler's C-inspired programming language. |
-| [Assembly Language Reference](assembly/assembly-reference.md) | Complete reference for the CPU's assembly language and assembler directives. |
+| [High-Level Language Reference]() | Syntax and features of the compiler's C-inspired programming language. |
+| [Assembly Language Reference]() | Complete reference for the CPU's assembly language and assembler directives. |
 
 ---
 
