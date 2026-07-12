@@ -423,7 +423,6 @@ The instruction set was designed around several principles.
 
 - Fixed-width 16-bit instructions
 - Simple instruction decoding
-- Small number of orthogonal instruction families
 - Dedicated hardware support for subroutines
 - Minimal hardware complexity
 - Close integration with the compiler and assembler
