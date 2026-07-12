@@ -34,8 +34,6 @@ The compiler is part of a complete hardware/software ecosystem consisting of:
 
 ---
 
----
-
 ## Compiler Overview
 
 The compiler converts a custom C-like language into the custom assembly language.
