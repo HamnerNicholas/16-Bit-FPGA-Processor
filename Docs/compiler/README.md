@@ -215,7 +215,6 @@ The compiler generates:
 
 ```
 assembly.txt
-ivt.txt
 ```
 
 These files can then be assembled into the memory image executed by the CPU.
