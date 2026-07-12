@@ -1,0 +1,13 @@
+let result = 0
+
+func square x = {
+    return x * x
+}
+
+call square(11)
+
+result = RETVAL
+
+print result
+
+halt

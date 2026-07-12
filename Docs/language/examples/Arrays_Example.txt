@@ -1,0 +1,13 @@
+let nums[] = 5, 10, 15, 20
+let result = 0
+
+result = nums[0] + nums[1]
+print result
+
+result = nums[2] + nums[3]
+print result
+
+print nums[0]
+print nums[3]
+
+halt

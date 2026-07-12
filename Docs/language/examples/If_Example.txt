@@ -1,0 +1,16 @@
+let x = 8
+let y = 4
+
+if x != y
+    print "NEQ "
+endif
+
+if y < x
+    print "LT "
+endif
+
+if x == 8
+    print "EQ "
+endif
+
+halt
