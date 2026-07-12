@@ -14,7 +14,7 @@ Two programming languages are supported:
 | Document | Description |
 |----------|-------------|
 | [High-Level Language Reference]() | Syntax and features of the compiler's C-inspired programming language. |
-| [Assembly Language Reference]() | Complete reference for the CPU's assembly language and assembler directives. |
+| [Assembly Language Reference](Assembly_Language_Reference.md) | Complete reference for the CPU's assembly language and assembler directives. |
 
 ---
 
