@@ -56,6 +56,7 @@ module comb_ckt_generator (
         .row_addr(pixel_y),
         .bit_row(font_byte)
     );
+	 
 
     // Target individual bit parsing logic
     wire pixel_on = font_byte[3'd7 - pixel_x] && is_inside_text_window;
