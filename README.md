@@ -1,13 +1,13 @@
 # 16-Bit CPU
 
-<img width="3433" height="594" alt="IMG_9878" src="https://github.com/user-attachments/assets/34ad6e51-8702-440b-a295-6805964479a6" />
-
-
 A complete hardware and software ecosystem built around a custom 16-bit processor.
 
 This project explores the full computer engineering stack by implementing a processor from the ground up, including the instruction set architecture, assembler, compiler, FPGA implementation, and supporting development tools.
 
 Unlike projects that focus solely on hardware, this repository demonstrates the complete path from high-level source code to execution on a custom processor.
+
+<img width="3433" height="594" alt="IMG_9878" src="https://github.com/user-attachments/assets/34ad6e51-8702-440b-a295-6805964479a6" />
+*The 16-Bit CPU executing on an Intel DE10-Lite FPGA and generating VGA output.*
 
 ---
 
