@@ -4,8 +4,6 @@ This section documents the Instruction Set Architecture (ISA) implemented by the
 
 The ISA defines the programming model exposed by the processor, including the available instructions, register architecture, instruction encoding, addressing modes, and interrupt model.
 
-While the processor architecture describes **how** the CPU is implemented in hardware, the ISA describes **what** the processor is capable of executing.
-
 ---
 
 ## Documents
