@@ -1,0 +1,38 @@
+; ------------------------------------------------------------
+; Main program
+; ------------------------------------------------------------
+
+addi r0 5
+copy r1
+
+jsr function
+
+; Execution must resume here after rsr.
+addi r0 0x22
+copy r2
+
+halt
+
+
+; ------------------------------------------------------------
+; Subroutine
+; ------------------------------------------------------------
+
+: function
+
+; ACC = R1 + 7 = 12
+addi r1 7
+
+; Save ACC into subroutine register 3.
+ssrf r3
+
+; Clear ACC.
+addi r0 0
+
+; Restore the saved value.
+rsrf r3
+
+; Prove the restored value is 12.
+copy r4
+
+rsr
