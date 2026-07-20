@@ -1,0 +1,5 @@
+addi r0 5
+copy r1
+addi r0 7
+add r1
+halt
