@@ -1,0 +1,17 @@
+; Write 0x12 to the lowest address
+addi r0 0x12
+store 0x00
+
+; Write 0x34 to the highest address
+addi r0 0x34
+store 0xFF
+
+; Clear the accumulator, then read both values back
+addi r0 0
+load 0x00
+copy r1
+
+load 0xFF
+copy r2
+
+halt
