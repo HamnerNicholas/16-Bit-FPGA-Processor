@@ -1,0 +1,34 @@
+.ivt INT3 custom_label
+
+; ------------------------------------------------------------
+; Main program
+; ------------------------------------------------------------
+
+addi r0 1
+copy r1
+
+; The testbench asserts INT3 while PC points here.
+; This instruction executes while the interrupt request is sampled.
+addi r1 1
+
+; INT_RET_REG should save this address.
+; This instruction is intentionally idempotent because it may execute
+; on interrupt entry and again after rint returns.
+copy r1
+
+addi r0 0x55
+copy r2
+
+halt
+
+
+; ------------------------------------------------------------
+; Interrupt service routine
+; ------------------------------------------------------------
+
+: custom_label
+
+addi r0 0xAA
+copy r3
+
+rint
