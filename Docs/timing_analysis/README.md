@@ -71,7 +71,7 @@ Static timing analysis reported:
 
 No setup timing violations were detected in any constrained clock domain.
 
-The worst setup path within the CPU clock domain exhibits **27.087 ns** of positive slack, providing substantial operating margin while executing at the target 25 MHz clock frequency. :contentReference[oaicite:0]{index=0}
+The worst setup path within the CPU clock domain exhibits **27.087 ns** of positive slack, providing substantial operating margin while executing at the target 25 MHz clock frequency.
 
 ---
 
@@ -99,7 +99,7 @@ Interestingly, the processor arithmetic datapath is **not** the limiting timing 
 
 The accumulator architecture produces a relatively shallow arithmetic datapath, allowing ALU operations to complete well within the required clock period. Instead, the longest processor timing path is associated with instruction fetch, instruction decoding, and memory-mapped display output.
 
-This demonstrates that the integrated VGA text console contributes more combinational delay than the processor execution hardware itself. :contentReference[oaicite:1]{index=1}
+This demonstrates that the integrated VGA text console contributes more combinational delay than the processor execution hardware itself.
 
 ---
 
@@ -124,8 +124,7 @@ Character Output Register
 
 TimeQuest reported a maximum combinational delay of approximately **14.24 ns** for this path.
 
-This path exists entirely within the VGA rendering hardware and is independent of processor execution. :contentReference[oaicite:2]{index=2}
-
+This path exists entirely within the VGA rendering hardware and is independent of processor execution.
 ---
 
 # Discussion
