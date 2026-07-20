@@ -1,0 +1,13 @@
+addi r0 10
+copy r1
+
+subi r1 3
+copy r2
+
+multi r2 4
+copy r3
+
+divi r3 7
+copy r4
+
+halt
