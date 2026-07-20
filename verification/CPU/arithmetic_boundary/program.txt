@@ -1,0 +1,27 @@
+; Create 0xFF for later tests
+addi r0 255
+copy r1
+
+; Addition overflow: 255 + 1 = 0
+addi r1 1
+copy r2
+
+; Subtraction underflow: 0 - 1 = 255
+subi r0 1
+copy r3
+
+; Multiplication truncation: 255 * 2 = 510 -> 0xFE
+multi r1 2
+copy r4
+
+; Integer division truncation: 10 / 3 = 3
+addi r0 10
+copy r5
+divi r5 3
+copy r6
+
+; Zero numerator: 0 / 7 = 0
+divi r0 7
+copy r7
+
+halt
