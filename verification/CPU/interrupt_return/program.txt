@@ -7,13 +7,10 @@
 addi r0 1
 copy r1
 
-; The testbench asserts INT3 while PC points here.
-; This instruction executes while the interrupt request is sampled.
+; INT3 is asserted while PC points here.
 addi r1 1
 
-; INT_RET_REG should save this address.
-; This instruction is intentionally idempotent because it may execute
-; on interrupt entry and again after rint returns.
+; Execution resumes here after rint.
 copy r1
 
 addi r0 0x55
@@ -28,7 +25,13 @@ halt
 
 : custom_label
 
+; Preserve interrupted accumulator value (0x02).
+ssrf r7
+
 addi r0 0xAA
 copy r3
+
+; Restore interrupted accumulator value.
+rsrf r7
 
 rint
