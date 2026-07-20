@@ -1,0 +1,1214 @@
+----------------
+; Command Info ;
+----------------
+Report Path: Found 20 paths. Longest delay is 14.240 
+
+Tcl Command:
+    report_path -file timing_analysis/reports/setup_report.txt -npaths 20
+
+Options:
+    -npaths 20 
+    -file_name "timing_analysis/reports/setup_report.txt" 
+
+Delay Model:
+    Slow 1200mV 85C Model
+
++--------------------------------------------------------------------------------------------------------------+
+; Summary of Paths                                                                                             ;
++--------+----------------------------------+------------------------------------------------------------------+
+; Delay  ; From Node                        ; To Node                                                          ;
++--------+----------------------------------+------------------------------------------------------------------+
+; 14.240 ; vga_controller:control|column[2] ; comb_ckt_generator:comb_ckt|video_vram:vram_inst|vga_char_out[0] ;
+; 14.089 ; vga_controller:control|column[3] ; comb_ckt_generator:comb_ckt|video_vram:vram_inst|vga_char_out[0] ;
+; 13.713 ; vga_controller:control|column[2] ; comb_ckt_generator:comb_ckt|video_vram:vram_inst|vga_char_out[5] ;
+; 13.582 ; vga_controller:control|column[2] ; comb_ckt_generator:comb_ckt|video_vram:vram_inst|vga_char_out[0] ;
+; 13.562 ; vga_controller:control|column[3] ; comb_ckt_generator:comb_ckt|video_vram:vram_inst|vga_char_out[5] ;
+; 13.534 ; vga_controller:control|column[3] ; comb_ckt_generator:comb_ckt|video_vram:vram_inst|vga_char_out[4] ;
+; 13.496 ; vga_controller:control|column[2] ; comb_ckt_generator:comb_ckt|video_vram:vram_inst|vga_char_out[4] ;
+; 13.455 ; vga_controller:control|column[4] ; comb_ckt_generator:comb_ckt|video_vram:vram_inst|vga_char_out[0] ;
+; 13.384 ; vga_controller:control|column[2] ; comb_ckt_generator:comb_ckt|video_vram:vram_inst|vga_char_out[4] ;
+; 13.374 ; vga_controller:control|column[4] ; comb_ckt_generator:comb_ckt|video_vram:vram_inst|vga_char_out[4] ;
+; 13.286 ; vga_controller:control|column[2] ; comb_ckt_generator:comb_ckt|video_vram:vram_inst|vga_char_out[0] ;
+; 13.279 ; vga_controller:control|column[3] ; comb_ckt_generator:comb_ckt|video_vram:vram_inst|vga_char_out[4] ;
+; 13.272 ; vga_controller:control|column[2] ; comb_ckt_generator:comb_ckt|video_vram:vram_inst|vga_char_out[5] ;
+; 13.262 ; vga_controller:control|column[4] ; comb_ckt_generator:comb_ckt|video_vram:vram_inst|vga_char_out[4] ;
+; 13.233 ; vga_controller:control|column[3] ; comb_ckt_generator:comb_ckt|video_vram:vram_inst|vga_char_out[4] ;
+; 13.219 ; vga_controller:control|column[2] ; comb_ckt_generator:comb_ckt|video_vram:vram_inst|vga_char_out[4] ;
+; 13.186 ; vga_controller:control|column[2] ; comb_ckt_generator:comb_ckt|video_vram:vram_inst|vga_char_out[4] ;
+; 13.135 ; vga_controller:control|column[3] ; comb_ckt_generator:comb_ckt|video_vram:vram_inst|vga_char_out[0] ;
+; 13.134 ; vga_controller:control|column[3] ; comb_ckt_generator:comb_ckt|video_vram:vram_inst|vga_char_out[1] ;
+; 13.122 ; vga_controller:control|column[2] ; comb_ckt_generator:comb_ckt|video_vram:vram_inst|vga_char_out[4] ;
++--------+----------------------------------+------------------------------------------------------------------+
+
+Path #1: Delay is 14.240
+===============================================================================
++------------------------------------------------------------------------------+
+; Path Summary                                                                 ;
++-----------+------------------------------------------------------------------+
+; Property  ; Value                                                            ;
++-----------+------------------------------------------------------------------+
+; From Node ; vga_controller:control|column[2]                                 ;
+; To Node   ; comb_ckt_generator:comb_ckt|video_vram:vram_inst|vga_char_out[0] ;
+; Delay     ; 14.240                                                           ;
++-----------+------------------------------------------------------------------+
+
++------------------------------------------------------------------------------------+
+; Statistics                                                                         ;
++------------------------+--------+-------+-------------+------------+-------+-------+
+; Property               ; Value  ; Count ; Total Delay ; % of Total ; Min   ; Max   ;
++------------------------+--------+-------+-------------+------------+-------+-------+
+; Data Delay             ; 14.240 ;       ;             ;            ;       ;       ;
+; Number of Logic Levels ;        ; 9     ;             ;            ;       ;       ;
+; Physical Delays        ;        ;       ;             ;            ;       ;       ;
+;  IC                    ;        ; 12    ; 9.933       ; 70         ; 0.000 ; 2.503 ;
+;  Cell                  ;        ; 13    ; 4.307       ; 30         ; 0.000 ; 0.637 ;
++------------------------+--------+-------+-------------+------------+-------+-------+
+Note: Negative delays are omitted from totals when calculating percentages
+
++---------------------------------------------------------------------------------------------------------------------------------+
+; Data Arrival Path                                                                                                               ;
++----------+---------+----+------+--------+--------------------+------------------------------------------------------------------+
+; Total    ; Incr    ; RF ; Type ; Fanout ; Location           ; Element                                                          ;
++----------+---------+----+------+--------+--------------------+------------------------------------------------------------------+
+; 14.240   ; 14.240  ;    ;      ;        ;                    ; data path                                                        ;
+;   0.000  ;   0.000 ;    ;      ; 1      ; FF_X39_Y22_N13     ; vga_controller:control|column[2]                                 ;
+;   0.000  ;   0.000 ; FF ; CELL ; 1      ; FF_X39_Y22_N13     ; control|column[2]|q                                              ;
+;   0.370  ;   0.370 ; FF ; IC   ; 2      ; LCCOMB_X39_Y22_N12 ; comb_ckt|Add0~0|dataa                                            ;
+;   0.847  ;   0.477 ; FF ; CELL ; 1      ; LCCOMB_X39_Y22_N12 ; comb_ckt|Add0~0|cout                                             ;
+;   0.847  ;   0.000 ; FF ; IC   ; 2      ; LCCOMB_X39_Y22_N14 ; comb_ckt|Add0~2|cin                                              ;
+;   0.906  ;   0.059 ; FR ; CELL ; 1      ; LCCOMB_X39_Y22_N14 ; comb_ckt|Add0~2|cout                                             ;
+;   0.906  ;   0.000 ; RR ; IC   ; 2      ; LCCOMB_X39_Y22_N16 ; comb_ckt|Add0~4|cin                                              ;
+;   1.543  ;   0.637 ; RR ; CELL ; 227    ; LCCOMB_X39_Y22_N16 ; comb_ckt|Add0~4|combout                                          ;
+;   4.046  ;   2.503 ; RR ; IC   ; 1      ; LCCOMB_X51_Y18_N28 ; comb_ckt|vram_inst|Mux7~66|dataa                                 ;
+;   4.443  ;   0.397 ; RR ; CELL ; 1      ; LCCOMB_X51_Y18_N28 ; comb_ckt|vram_inst|Mux7~66|combout                               ;
+;   6.115  ;   1.672 ; RR ; IC   ; 1      ; LCCOMB_X58_Y24_N12 ; comb_ckt|vram_inst|Mux7~67|dataa                                 ;
+;   6.537  ;   0.422 ; RR ; CELL ; 1      ; LCCOMB_X58_Y24_N12 ; comb_ckt|vram_inst|Mux7~67|combout                               ;
+;   8.602  ;   2.065 ; RR ; IC   ; 1      ; LCCOMB_X41_Y25_N8  ; comb_ckt|vram_inst|Mux7~68|datac                                 ;
+;   8.907  ;   0.305 ; RR ; CELL ; 1      ; LCCOMB_X41_Y25_N8  ; comb_ckt|vram_inst|Mux7~68|combout                               ;
+;   9.942  ;   1.035 ; RR ; IC   ; 1      ; LCCOMB_X47_Y25_N2  ; comb_ckt|vram_inst|Mux7~71|dataa                                 ;
+;   10.364 ;   0.422 ; RR ; CELL ; 1      ; LCCOMB_X47_Y25_N2  ; comb_ckt|vram_inst|Mux7~71|combout                               ;
+;   10.569 ;   0.205 ; RR ; IC   ; 1      ; LCCOMB_X47_Y25_N20 ; comb_ckt|vram_inst|Mux7~72|datad                                 ;
+;   10.735 ;   0.166 ; RR ; CELL ; 1      ; LCCOMB_X47_Y25_N20 ; comb_ckt|vram_inst|Mux7~72|combout                               ;
+;   10.939 ;   0.204 ; RR ; IC   ; 1      ; LCCOMB_X47_Y25_N10 ; comb_ckt|vram_inst|Mux7~83|datad                                 ;
+;   11.105 ;   0.166 ; RR ; CELL ; 1      ; LCCOMB_X47_Y25_N10 ; comb_ckt|vram_inst|Mux7~83|combout                               ;
+;   12.115 ;   1.010 ; RR ; IC   ; 1      ; LCCOMB_X41_Y25_N18 ; comb_ckt|vram_inst|Mux7~126|dataa                                ;
+;   12.524 ;   0.409 ; RR ; CELL ; 1      ; LCCOMB_X41_Y25_N18 ; comb_ckt|vram_inst|Mux7~126|combout                              ;
+;   12.763 ;   0.239 ; RR ; IC   ; 1      ; LCCOMB_X41_Y25_N6  ; comb_ckt|vram_inst|Mux7~169|datab                                ;
+;   13.186 ;   0.423 ; RR ; CELL ; 1      ; LCCOMB_X41_Y25_N6  ; comb_ckt|vram_inst|Mux7~169|combout                              ;
+;   13.816 ;   0.630 ; RR ; IC   ; 1      ; FF_X42_Y25_N15     ; comb_ckt|vram_inst|vga_char_out[0]|asdata                        ;
+;   14.240 ;   0.424 ; RR ; CELL ; 1      ; FF_X42_Y25_N15     ; comb_ckt_generator:comb_ckt|video_vram:vram_inst|vga_char_out[0] ;
++----------+---------+----+------+--------+--------------------+------------------------------------------------------------------+
+
+
+Path #2: Delay is 14.089
+===============================================================================
++------------------------------------------------------------------------------+
+; Path Summary                                                                 ;
++-----------+------------------------------------------------------------------+
+; Property  ; Value                                                            ;
++-----------+------------------------------------------------------------------+
+; From Node ; vga_controller:control|column[3]                                 ;
+; To Node   ; comb_ckt_generator:comb_ckt|video_vram:vram_inst|vga_char_out[0] ;
+; Delay     ; 14.089                                                           ;
++-----------+------------------------------------------------------------------+
+
++------------------------------------------------------------------------------------+
+; Statistics                                                                         ;
++------------------------+--------+-------+-------------+------------+-------+-------+
+; Property               ; Value  ; Count ; Total Delay ; % of Total ; Min   ; Max   ;
++------------------------+--------+-------+-------------+------------+-------+-------+
+; Data Delay             ; 14.089 ;       ;             ;            ;       ;       ;
+; Number of Logic Levels ;        ; 9     ;             ;            ;       ;       ;
+; Physical Delays        ;        ;       ;             ;            ;       ;       ;
+;  IC                    ;        ; 11    ; 9.925       ; 70         ; 0.000 ; 2.503 ;
+;  Cell                  ;        ; 12    ; 4.164       ; 30         ; 0.000 ; 0.637 ;
++------------------------+--------+-------+-------------+------------+-------+-------+
+Note: Negative delays are omitted from totals when calculating percentages
+
++---------------------------------------------------------------------------------------------------------------------------------+
+; Data Arrival Path                                                                                                               ;
++----------+---------+----+------+--------+--------------------+------------------------------------------------------------------+
+; Total    ; Incr    ; RF ; Type ; Fanout ; Location           ; Element                                                          ;
++----------+---------+----+------+--------+--------------------+------------------------------------------------------------------+
+; 14.089   ; 14.089  ;    ;      ;        ;                    ; data path                                                        ;
+;   0.000  ;   0.000 ;    ;      ; 1      ; FF_X39_Y22_N15     ; vga_controller:control|column[3]                                 ;
+;   0.000  ;   0.000 ; FF ; CELL ; 1      ; FF_X39_Y22_N15     ; control|column[3]|q                                              ;
+;   0.362  ;   0.362 ; FF ; IC   ; 2      ; LCCOMB_X39_Y22_N14 ; comb_ckt|Add0~2|datab                                            ;
+;   0.755  ;   0.393 ; FR ; CELL ; 1      ; LCCOMB_X39_Y22_N14 ; comb_ckt|Add0~2|cout                                             ;
+;   0.755  ;   0.000 ; RR ; IC   ; 2      ; LCCOMB_X39_Y22_N16 ; comb_ckt|Add0~4|cin                                              ;
+;   1.392  ;   0.637 ; RR ; CELL ; 227    ; LCCOMB_X39_Y22_N16 ; comb_ckt|Add0~4|combout                                          ;
+;   3.895  ;   2.503 ; RR ; IC   ; 1      ; LCCOMB_X51_Y18_N28 ; comb_ckt|vram_inst|Mux7~66|dataa                                 ;
+;   4.292  ;   0.397 ; RR ; CELL ; 1      ; LCCOMB_X51_Y18_N28 ; comb_ckt|vram_inst|Mux7~66|combout                               ;
+;   5.964  ;   1.672 ; RR ; IC   ; 1      ; LCCOMB_X58_Y24_N12 ; comb_ckt|vram_inst|Mux7~67|dataa                                 ;
+;   6.386  ;   0.422 ; RR ; CELL ; 1      ; LCCOMB_X58_Y24_N12 ; comb_ckt|vram_inst|Mux7~67|combout                               ;
+;   8.451  ;   2.065 ; RR ; IC   ; 1      ; LCCOMB_X41_Y25_N8  ; comb_ckt|vram_inst|Mux7~68|datac                                 ;
+;   8.756  ;   0.305 ; RR ; CELL ; 1      ; LCCOMB_X41_Y25_N8  ; comb_ckt|vram_inst|Mux7~68|combout                               ;
+;   9.791  ;   1.035 ; RR ; IC   ; 1      ; LCCOMB_X47_Y25_N2  ; comb_ckt|vram_inst|Mux7~71|dataa                                 ;
+;   10.213 ;   0.422 ; RR ; CELL ; 1      ; LCCOMB_X47_Y25_N2  ; comb_ckt|vram_inst|Mux7~71|combout                               ;
+;   10.418 ;   0.205 ; RR ; IC   ; 1      ; LCCOMB_X47_Y25_N20 ; comb_ckt|vram_inst|Mux7~72|datad                                 ;
+;   10.584 ;   0.166 ; RR ; CELL ; 1      ; LCCOMB_X47_Y25_N20 ; comb_ckt|vram_inst|Mux7~72|combout                               ;
+;   10.788 ;   0.204 ; RR ; IC   ; 1      ; LCCOMB_X47_Y25_N10 ; comb_ckt|vram_inst|Mux7~83|datad                                 ;
+;   10.954 ;   0.166 ; RR ; CELL ; 1      ; LCCOMB_X47_Y25_N10 ; comb_ckt|vram_inst|Mux7~83|combout                               ;
+;   11.964 ;   1.010 ; RR ; IC   ; 1      ; LCCOMB_X41_Y25_N18 ; comb_ckt|vram_inst|Mux7~126|dataa                                ;
+;   12.373 ;   0.409 ; RR ; CELL ; 1      ; LCCOMB_X41_Y25_N18 ; comb_ckt|vram_inst|Mux7~126|combout                              ;
+;   12.612 ;   0.239 ; RR ; IC   ; 1      ; LCCOMB_X41_Y25_N6  ; comb_ckt|vram_inst|Mux7~169|datab                                ;
+;   13.035 ;   0.423 ; RR ; CELL ; 1      ; LCCOMB_X41_Y25_N6  ; comb_ckt|vram_inst|Mux7~169|combout                              ;
+;   13.665 ;   0.630 ; RR ; IC   ; 1      ; FF_X42_Y25_N15     ; comb_ckt|vram_inst|vga_char_out[0]|asdata                        ;
+;   14.089 ;   0.424 ; RR ; CELL ; 1      ; FF_X42_Y25_N15     ; comb_ckt_generator:comb_ckt|video_vram:vram_inst|vga_char_out[0] ;
++----------+---------+----+------+--------+--------------------+------------------------------------------------------------------+
+
+
+Path #3: Delay is 13.713
+===============================================================================
++------------------------------------------------------------------------------+
+; Path Summary                                                                 ;
++-----------+------------------------------------------------------------------+
+; Property  ; Value                                                            ;
++-----------+------------------------------------------------------------------+
+; From Node ; vga_controller:control|column[2]                                 ;
+; To Node   ; comb_ckt_generator:comb_ckt|video_vram:vram_inst|vga_char_out[5] ;
+; Delay     ; 13.713                                                           ;
++-----------+------------------------------------------------------------------+
+
++------------------------------------------------------------------------------------+
+; Statistics                                                                         ;
++------------------------+--------+-------+-------------+------------+-------+-------+
+; Property               ; Value  ; Count ; Total Delay ; % of Total ; Min   ; Max   ;
++------------------------+--------+-------+-------------+------------+-------+-------+
+; Data Delay             ; 13.713 ;       ;             ;            ;       ;       ;
+; Number of Logic Levels ;        ; 9     ;             ;            ;       ;       ;
+; Physical Delays        ;        ;       ;             ;            ;       ;       ;
+;  IC                    ;        ; 12    ; 9.568       ; 70         ; 0.000 ; 2.309 ;
+;  Cell                  ;        ; 13    ; 4.145       ; 30         ; 0.000 ; 0.637 ;
++------------------------+--------+-------+-------------+------------+-------+-------+
+Note: Negative delays are omitted from totals when calculating percentages
+
++---------------------------------------------------------------------------------------------------------------------------------+
+; Data Arrival Path                                                                                                               ;
++----------+---------+----+------+--------+--------------------+------------------------------------------------------------------+
+; Total    ; Incr    ; RF ; Type ; Fanout ; Location           ; Element                                                          ;
++----------+---------+----+------+--------+--------------------+------------------------------------------------------------------+
+; 13.713   ; 13.713  ;    ;      ;        ;                    ; data path                                                        ;
+;   0.000  ;   0.000 ;    ;      ; 1      ; FF_X39_Y22_N13     ; vga_controller:control|column[2]                                 ;
+;   0.000  ;   0.000 ; FF ; CELL ; 1      ; FF_X39_Y22_N13     ; control|column[2]|q                                              ;
+;   0.370  ;   0.370 ; FF ; IC   ; 2      ; LCCOMB_X39_Y22_N12 ; comb_ckt|Add0~0|dataa                                            ;
+;   0.847  ;   0.477 ; FF ; CELL ; 1      ; LCCOMB_X39_Y22_N12 ; comb_ckt|Add0~0|cout                                             ;
+;   0.847  ;   0.000 ; FF ; IC   ; 2      ; LCCOMB_X39_Y22_N14 ; comb_ckt|Add0~2|cin                                              ;
+;   0.906  ;   0.059 ; FR ; CELL ; 1      ; LCCOMB_X39_Y22_N14 ; comb_ckt|Add0~2|cout                                             ;
+;   0.906  ;   0.000 ; RR ; IC   ; 2      ; LCCOMB_X39_Y22_N16 ; comb_ckt|Add0~4|cin                                              ;
+;   1.543  ;   0.637 ; RR ; CELL ; 227    ; LCCOMB_X39_Y22_N16 ; comb_ckt|Add0~4|combout                                          ;
+;   3.852  ;   2.309 ; RR ; IC   ; 1      ; LCCOMB_X49_Y28_N8  ; comb_ckt|vram_inst|Mux2~96|datab                                 ;
+;   4.294  ;   0.442 ; RF ; CELL ; 1      ; LCCOMB_X49_Y28_N8  ; comb_ckt|vram_inst|Mux2~96|combout                               ;
+;   5.344  ;   1.050 ; FF ; IC   ; 1      ; LCCOMB_X50_Y25_N26 ; comb_ckt|vram_inst|Mux2~97|dataa                                 ;
+;   5.760  ;   0.416 ; FR ; CELL ; 1      ; LCCOMB_X50_Y25_N26 ; comb_ckt|vram_inst|Mux2~97|combout                               ;
+;   7.436  ;   1.676 ; RR ; IC   ; 1      ; LCCOMB_X56_Y20_N2  ; comb_ckt|vram_inst|Mux2~100|datab                                ;
+;   7.838  ;   0.402 ; RR ; CELL ; 1      ; LCCOMB_X56_Y20_N2  ; comb_ckt|vram_inst|Mux2~100|combout                              ;
+;   8.592  ;   0.754 ; RR ; IC   ; 1      ; LCCOMB_X56_Y19_N26 ; comb_ckt|vram_inst|Mux2~103|datac                                ;
+;   8.897  ;   0.305 ; RR ; CELL ; 1      ; LCCOMB_X56_Y19_N26 ; comb_ckt|vram_inst|Mux2~103|combout                              ;
+;   10.909 ;   2.012 ; RR ; IC   ; 1      ; LCCOMB_X46_Y25_N16 ; comb_ckt|vram_inst|Mux2~114|datac                                ;
+;   11.214 ;   0.305 ; RR ; CELL ; 1      ; LCCOMB_X46_Y25_N16 ; comb_ckt|vram_inst|Mux2~114|combout                              ;
+;   11.453 ;   0.239 ; RR ; IC   ; 1      ; LCCOMB_X46_Y25_N2  ; comb_ckt|vram_inst|Mux2~125|datab                                ;
+;   11.902 ;   0.449 ; RF ; CELL ; 1      ; LCCOMB_X46_Y25_N2  ; comb_ckt|vram_inst|Mux2~125|combout                              ;
+;   12.141 ;   0.239 ; FF ; IC   ; 1      ; LCCOMB_X46_Y25_N28 ; comb_ckt|vram_inst|Mux2~126|datad                                ;
+;   12.272 ;   0.131 ; FF ; CELL ; 1      ; LCCOMB_X46_Y25_N28 ; comb_ckt|vram_inst|Mux2~126|combout                              ;
+;   13.191 ;   0.919 ; FF ; IC   ; 1      ; LCCOMB_X41_Y25_N12 ; comb_ckt|vram_inst|Mux2~169|dataa                                ;
+;   13.619 ;   0.428 ; FF ; CELL ; 1      ; LCCOMB_X41_Y25_N12 ; comb_ckt|vram_inst|Mux2~169|combout                              ;
+;   13.619 ;   0.000 ; FF ; IC   ; 1      ; FF_X41_Y25_N13     ; comb_ckt|vram_inst|vga_char_out[5]|d                             ;
+;   13.713 ;   0.094 ; FF ; CELL ; 1      ; FF_X41_Y25_N13     ; comb_ckt_generator:comb_ckt|video_vram:vram_inst|vga_char_out[5] ;
++----------+---------+----+------+--------+--------------------+------------------------------------------------------------------+
+
+
+Path #4: Delay is 13.582
+===============================================================================
++------------------------------------------------------------------------------+
+; Path Summary                                                                 ;
++-----------+------------------------------------------------------------------+
+; Property  ; Value                                                            ;
++-----------+------------------------------------------------------------------+
+; From Node ; vga_controller:control|column[2]                                 ;
+; To Node   ; comb_ckt_generator:comb_ckt|video_vram:vram_inst|vga_char_out[0] ;
+; Delay     ; 13.582                                                           ;
++-----------+------------------------------------------------------------------+
+
++------------------------------------------------------------------------------------+
+; Statistics                                                                         ;
++------------------------+--------+-------+-------------+------------+-------+-------+
+; Property               ; Value  ; Count ; Total Delay ; % of Total ; Min   ; Max   ;
++------------------------+--------+-------+-------------+------------+-------+-------+
+; Data Delay             ; 13.582 ;       ;             ;            ;       ;       ;
+; Number of Logic Levels ;        ; 9     ;             ;            ;       ;       ;
+; Physical Delays        ;        ;       ;             ;            ;       ;       ;
+;  IC                    ;        ; 11    ; 9.493       ; 70         ; 0.000 ; 2.065 ;
+;  Cell                  ;        ; 12    ; 4.089       ; 30         ; 0.000 ; 0.477 ;
++------------------------+--------+-------+-------------+------------+-------+-------+
+Note: Negative delays are omitted from totals when calculating percentages
+
++---------------------------------------------------------------------------------------------------------------------------------+
+; Data Arrival Path                                                                                                               ;
++----------+---------+----+------+--------+--------------------+------------------------------------------------------------------+
+; Total    ; Incr    ; RF ; Type ; Fanout ; Location           ; Element                                                          ;
++----------+---------+----+------+--------+--------------------+------------------------------------------------------------------+
+; 13.582   ; 13.582  ;    ;      ;        ;                    ; data path                                                        ;
+;   0.000  ;   0.000 ;    ;      ; 1      ; FF_X39_Y22_N13     ; vga_controller:control|column[2]                                 ;
+;   0.000  ;   0.000 ; FF ; CELL ; 1      ; FF_X39_Y22_N13     ; control|column[2]|q                                              ;
+;   0.370  ;   0.370 ; FF ; IC   ; 2      ; LCCOMB_X39_Y22_N12 ; comb_ckt|Add0~0|dataa                                            ;
+;   0.847  ;   0.477 ; FF ; CELL ; 1      ; LCCOMB_X39_Y22_N12 ; comb_ckt|Add0~0|cout                                             ;
+;   0.847  ;   0.000 ; FF ; IC   ; 2      ; LCCOMB_X39_Y22_N14 ; comb_ckt|Add0~2|cin                                              ;
+;   1.320  ;   0.473 ; FR ; CELL ; 226    ; LCCOMB_X39_Y22_N14 ; comb_ckt|Add0~2|combout                                          ;
+;   3.383  ;   2.063 ; RR ; IC   ; 1      ; LCCOMB_X51_Y18_N28 ; comb_ckt|vram_inst|Mux7~66|datab                                 ;
+;   3.785  ;   0.402 ; RR ; CELL ; 1      ; LCCOMB_X51_Y18_N28 ; comb_ckt|vram_inst|Mux7~66|combout                               ;
+;   5.457  ;   1.672 ; RR ; IC   ; 1      ; LCCOMB_X58_Y24_N12 ; comb_ckt|vram_inst|Mux7~67|dataa                                 ;
+;   5.879  ;   0.422 ; RR ; CELL ; 1      ; LCCOMB_X58_Y24_N12 ; comb_ckt|vram_inst|Mux7~67|combout                               ;
+;   7.944  ;   2.065 ; RR ; IC   ; 1      ; LCCOMB_X41_Y25_N8  ; comb_ckt|vram_inst|Mux7~68|datac                                 ;
+;   8.249  ;   0.305 ; RR ; CELL ; 1      ; LCCOMB_X41_Y25_N8  ; comb_ckt|vram_inst|Mux7~68|combout                               ;
+;   9.284  ;   1.035 ; RR ; IC   ; 1      ; LCCOMB_X47_Y25_N2  ; comb_ckt|vram_inst|Mux7~71|dataa                                 ;
+;   9.706  ;   0.422 ; RR ; CELL ; 1      ; LCCOMB_X47_Y25_N2  ; comb_ckt|vram_inst|Mux7~71|combout                               ;
+;   9.911  ;   0.205 ; RR ; IC   ; 1      ; LCCOMB_X47_Y25_N20 ; comb_ckt|vram_inst|Mux7~72|datad                                 ;
+;   10.077 ;   0.166 ; RR ; CELL ; 1      ; LCCOMB_X47_Y25_N20 ; comb_ckt|vram_inst|Mux7~72|combout                               ;
+;   10.281 ;   0.204 ; RR ; IC   ; 1      ; LCCOMB_X47_Y25_N10 ; comb_ckt|vram_inst|Mux7~83|datad                                 ;
+;   10.447 ;   0.166 ; RR ; CELL ; 1      ; LCCOMB_X47_Y25_N10 ; comb_ckt|vram_inst|Mux7~83|combout                               ;
+;   11.457 ;   1.010 ; RR ; IC   ; 1      ; LCCOMB_X41_Y25_N18 ; comb_ckt|vram_inst|Mux7~126|dataa                                ;
+;   11.866 ;   0.409 ; RR ; CELL ; 1      ; LCCOMB_X41_Y25_N18 ; comb_ckt|vram_inst|Mux7~126|combout                              ;
+;   12.105 ;   0.239 ; RR ; IC   ; 1      ; LCCOMB_X41_Y25_N6  ; comb_ckt|vram_inst|Mux7~169|datab                                ;
+;   12.528 ;   0.423 ; RR ; CELL ; 1      ; LCCOMB_X41_Y25_N6  ; comb_ckt|vram_inst|Mux7~169|combout                              ;
+;   13.158 ;   0.630 ; RR ; IC   ; 1      ; FF_X42_Y25_N15     ; comb_ckt|vram_inst|vga_char_out[0]|asdata                        ;
+;   13.582 ;   0.424 ; RR ; CELL ; 1      ; FF_X42_Y25_N15     ; comb_ckt_generator:comb_ckt|video_vram:vram_inst|vga_char_out[0] ;
++----------+---------+----+------+--------+--------------------+------------------------------------------------------------------+
+
+
+Path #5: Delay is 13.562
+===============================================================================
++------------------------------------------------------------------------------+
+; Path Summary                                                                 ;
++-----------+------------------------------------------------------------------+
+; Property  ; Value                                                            ;
++-----------+------------------------------------------------------------------+
+; From Node ; vga_controller:control|column[3]                                 ;
+; To Node   ; comb_ckt_generator:comb_ckt|video_vram:vram_inst|vga_char_out[5] ;
+; Delay     ; 13.562                                                           ;
++-----------+------------------------------------------------------------------+
+
++------------------------------------------------------------------------------------+
+; Statistics                                                                         ;
++------------------------+--------+-------+-------------+------------+-------+-------+
+; Property               ; Value  ; Count ; Total Delay ; % of Total ; Min   ; Max   ;
++------------------------+--------+-------+-------------+------------+-------+-------+
+; Data Delay             ; 13.562 ;       ;             ;            ;       ;       ;
+; Number of Logic Levels ;        ; 9     ;             ;            ;       ;       ;
+; Physical Delays        ;        ;       ;             ;            ;       ;       ;
+;  IC                    ;        ; 11    ; 9.560       ; 70         ; 0.000 ; 2.309 ;
+;  Cell                  ;        ; 12    ; 4.002       ; 30         ; 0.000 ; 0.637 ;
++------------------------+--------+-------+-------------+------------+-------+-------+
+Note: Negative delays are omitted from totals when calculating percentages
+
++---------------------------------------------------------------------------------------------------------------------------------+
+; Data Arrival Path                                                                                                               ;
++----------+---------+----+------+--------+--------------------+------------------------------------------------------------------+
+; Total    ; Incr    ; RF ; Type ; Fanout ; Location           ; Element                                                          ;
++----------+---------+----+------+--------+--------------------+------------------------------------------------------------------+
+; 13.562   ; 13.562  ;    ;      ;        ;                    ; data path                                                        ;
+;   0.000  ;   0.000 ;    ;      ; 1      ; FF_X39_Y22_N15     ; vga_controller:control|column[3]                                 ;
+;   0.000  ;   0.000 ; FF ; CELL ; 1      ; FF_X39_Y22_N15     ; control|column[3]|q                                              ;
+;   0.362  ;   0.362 ; FF ; IC   ; 2      ; LCCOMB_X39_Y22_N14 ; comb_ckt|Add0~2|datab                                            ;
+;   0.755  ;   0.393 ; FR ; CELL ; 1      ; LCCOMB_X39_Y22_N14 ; comb_ckt|Add0~2|cout                                             ;
+;   0.755  ;   0.000 ; RR ; IC   ; 2      ; LCCOMB_X39_Y22_N16 ; comb_ckt|Add0~4|cin                                              ;
+;   1.392  ;   0.637 ; RR ; CELL ; 227    ; LCCOMB_X39_Y22_N16 ; comb_ckt|Add0~4|combout                                          ;
+;   3.701  ;   2.309 ; RR ; IC   ; 1      ; LCCOMB_X49_Y28_N8  ; comb_ckt|vram_inst|Mux2~96|datab                                 ;
+;   4.143  ;   0.442 ; RF ; CELL ; 1      ; LCCOMB_X49_Y28_N8  ; comb_ckt|vram_inst|Mux2~96|combout                               ;
+;   5.193  ;   1.050 ; FF ; IC   ; 1      ; LCCOMB_X50_Y25_N26 ; comb_ckt|vram_inst|Mux2~97|dataa                                 ;
+;   5.609  ;   0.416 ; FR ; CELL ; 1      ; LCCOMB_X50_Y25_N26 ; comb_ckt|vram_inst|Mux2~97|combout                               ;
+;   7.285  ;   1.676 ; RR ; IC   ; 1      ; LCCOMB_X56_Y20_N2  ; comb_ckt|vram_inst|Mux2~100|datab                                ;
+;   7.687  ;   0.402 ; RR ; CELL ; 1      ; LCCOMB_X56_Y20_N2  ; comb_ckt|vram_inst|Mux2~100|combout                              ;
+;   8.441  ;   0.754 ; RR ; IC   ; 1      ; LCCOMB_X56_Y19_N26 ; comb_ckt|vram_inst|Mux2~103|datac                                ;
+;   8.746  ;   0.305 ; RR ; CELL ; 1      ; LCCOMB_X56_Y19_N26 ; comb_ckt|vram_inst|Mux2~103|combout                              ;
+;   10.758 ;   2.012 ; RR ; IC   ; 1      ; LCCOMB_X46_Y25_N16 ; comb_ckt|vram_inst|Mux2~114|datac                                ;
+;   11.063 ;   0.305 ; RR ; CELL ; 1      ; LCCOMB_X46_Y25_N16 ; comb_ckt|vram_inst|Mux2~114|combout                              ;
+;   11.302 ;   0.239 ; RR ; IC   ; 1      ; LCCOMB_X46_Y25_N2  ; comb_ckt|vram_inst|Mux2~125|datab                                ;
+;   11.751 ;   0.449 ; RF ; CELL ; 1      ; LCCOMB_X46_Y25_N2  ; comb_ckt|vram_inst|Mux2~125|combout                              ;
+;   11.990 ;   0.239 ; FF ; IC   ; 1      ; LCCOMB_X46_Y25_N28 ; comb_ckt|vram_inst|Mux2~126|datad                                ;
+;   12.121 ;   0.131 ; FF ; CELL ; 1      ; LCCOMB_X46_Y25_N28 ; comb_ckt|vram_inst|Mux2~126|combout                              ;
+;   13.040 ;   0.919 ; FF ; IC   ; 1      ; LCCOMB_X41_Y25_N12 ; comb_ckt|vram_inst|Mux2~169|dataa                                ;
+;   13.468 ;   0.428 ; FF ; CELL ; 1      ; LCCOMB_X41_Y25_N12 ; comb_ckt|vram_inst|Mux2~169|combout                              ;
+;   13.468 ;   0.000 ; FF ; IC   ; 1      ; FF_X41_Y25_N13     ; comb_ckt|vram_inst|vga_char_out[5]|d                             ;
+;   13.562 ;   0.094 ; FF ; CELL ; 1      ; FF_X41_Y25_N13     ; comb_ckt_generator:comb_ckt|video_vram:vram_inst|vga_char_out[5] ;
++----------+---------+----+------+--------+--------------------+------------------------------------------------------------------+
+
+
+Path #6: Delay is 13.534
+===============================================================================
++------------------------------------------------------------------------------+
+; Path Summary                                                                 ;
++-----------+------------------------------------------------------------------+
+; Property  ; Value                                                            ;
++-----------+------------------------------------------------------------------+
+; From Node ; vga_controller:control|column[3]                                 ;
+; To Node   ; comb_ckt_generator:comb_ckt|video_vram:vram_inst|vga_char_out[4] ;
+; Delay     ; 13.534                                                           ;
++-----------+------------------------------------------------------------------+
+
++------------------------------------------------------------------------------------+
+; Statistics                                                                         ;
++------------------------+--------+-------+-------------+------------+-------+-------+
+; Property               ; Value  ; Count ; Total Delay ; % of Total ; Min   ; Max   ;
++------------------------+--------+-------+-------------+------------+-------+-------+
+; Data Delay             ; 13.534 ;       ;             ;            ;       ;       ;
+; Number of Logic Levels ;        ; 7     ;             ;            ;       ;       ;
+; Physical Delays        ;        ;       ;             ;            ;       ;       ;
+;  IC                    ;        ; 10    ; 10.118      ; 75         ; 0.000 ; 2.188 ;
+;  Cell                  ;        ; 11    ; 3.416       ; 25         ; 0.000 ; 0.637 ;
++------------------------+--------+-------+-------------+------------+-------+-------+
+Note: Negative delays are omitted from totals when calculating percentages
+
++---------------------------------------------------------------------------------------------------------------------------------+
+; Data Arrival Path                                                                                                               ;
++----------+---------+----+------+--------+--------------------+------------------------------------------------------------------+
+; Total    ; Incr    ; RF ; Type ; Fanout ; Location           ; Element                                                          ;
++----------+---------+----+------+--------+--------------------+------------------------------------------------------------------+
+; 13.534   ; 13.534  ;    ;      ;        ;                    ; data path                                                        ;
+;   0.000  ;   0.000 ;    ;      ; 1      ; FF_X39_Y22_N15     ; vga_controller:control|column[3]                                 ;
+;   0.000  ;   0.000 ; RR ; CELL ; 1      ; FF_X39_Y22_N15     ; control|column[3]|q                                              ;
+;   0.278  ;   0.278 ; RR ; IC   ; 2      ; LCCOMB_X39_Y22_N14 ; comb_ckt|Add0~2|datab                                            ;
+;   0.802  ;   0.524 ; RF ; CELL ; 1      ; LCCOMB_X39_Y22_N14 ; comb_ckt|Add0~2|cout                                             ;
+;   0.802  ;   0.000 ; FF ; IC   ; 2      ; LCCOMB_X39_Y22_N16 ; comb_ckt|Add0~4|cin                                              ;
+;   0.861  ;   0.059 ; FR ; CELL ; 1      ; LCCOMB_X39_Y22_N16 ; comb_ckt|Add0~4|cout                                             ;
+;   0.861  ;   0.000 ; RR ; IC   ; 2      ; LCCOMB_X39_Y22_N18 ; comb_ckt|Add0~6|cin                                              ;
+;   1.498  ;   0.637 ; RR ; CELL ; 208    ; LCCOMB_X39_Y22_N18 ; comb_ckt|Add0~6|combout                                          ;
+;   3.686  ;   2.188 ; RR ; IC   ; 1      ; LCCOMB_X47_Y16_N26 ; comb_ckt|vram_inst|Mux3~27|datab                                 ;
+;   4.135  ;   0.449 ; RF ; CELL ; 1      ; LCCOMB_X47_Y16_N26 ; comb_ckt|vram_inst|Mux3~27|combout                               ;
+;   4.861  ;   0.726 ; FF ; IC   ; 1      ; LCCOMB_X51_Y16_N0  ; comb_ckt|vram_inst|Mux3~28|dataa                                 ;
+;   5.236  ;   0.375 ; FR ; CELL ; 1      ; LCCOMB_X51_Y16_N0  ; comb_ckt|vram_inst|Mux3~28|combout                               ;
+;   7.270  ;   2.034 ; RR ; IC   ; 1      ; LCCOMB_X58_Y28_N26 ; comb_ckt|vram_inst|Mux3~29|datac                                 ;
+;   7.575  ;   0.305 ; RR ; CELL ; 1      ; LCCOMB_X58_Y28_N26 ; comb_ckt|vram_inst|Mux3~29|combout                               ;
+;   9.607  ;   2.032 ; RR ; IC   ; 1      ; LCCOMB_X46_Y20_N8  ; comb_ckt|vram_inst|Mux3~30|datab                                 ;
+;   10.030 ;   0.423 ; RR ; CELL ; 1      ; LCCOMB_X46_Y20_N8  ; comb_ckt|vram_inst|Mux3~30|combout                               ;
+;   10.996 ;   0.966 ; RR ; IC   ; 1      ; LCCOMB_X50_Y20_N0  ; comb_ckt|vram_inst|Mux3~41|datad                                 ;
+;   11.141 ;   0.145 ; RF ; CELL ; 1      ; LCCOMB_X50_Y20_N0  ; comb_ckt|vram_inst|Mux3~41|combout                               ;
+;   13.035 ;   1.894 ; FF ; IC   ; 1      ; LCCOMB_X43_Y26_N30 ; comb_ckt|vram_inst|Mux3~169|dataa                                ;
+;   13.440 ;   0.405 ; FF ; CELL ; 1      ; LCCOMB_X43_Y26_N30 ; comb_ckt|vram_inst|Mux3~169|combout                              ;
+;   13.440 ;   0.000 ; FF ; IC   ; 1      ; FF_X43_Y26_N31     ; comb_ckt|vram_inst|vga_char_out[4]|d                             ;
+;   13.534 ;   0.094 ; FF ; CELL ; 1      ; FF_X43_Y26_N31     ; comb_ckt_generator:comb_ckt|video_vram:vram_inst|vga_char_out[4] ;
++----------+---------+----+------+--------+--------------------+------------------------------------------------------------------+
+
+
+Path #7: Delay is 13.496
+===============================================================================
++------------------------------------------------------------------------------+
+; Path Summary                                                                 ;
++-----------+------------------------------------------------------------------+
+; Property  ; Value                                                            ;
++-----------+------------------------------------------------------------------+
+; From Node ; vga_controller:control|column[2]                                 ;
+; To Node   ; comb_ckt_generator:comb_ckt|video_vram:vram_inst|vga_char_out[4] ;
+; Delay     ; 13.496                                                           ;
++-----------+------------------------------------------------------------------+
+
++------------------------------------------------------------------------------------+
+; Statistics                                                                         ;
++------------------------+--------+-------+-------------+------------+-------+-------+
+; Property               ; Value  ; Count ; Total Delay ; % of Total ; Min   ; Max   ;
++------------------------+--------+-------+-------------+------------+-------+-------+
+; Data Delay             ; 13.496 ;       ;             ;            ;       ;       ;
+; Number of Logic Levels ;        ; 7     ;             ;            ;       ;       ;
+; Physical Delays        ;        ;       ;             ;            ;       ;       ;
+;  IC                    ;        ; 11    ; 10.172      ; 75         ; 0.000 ; 2.138 ;
+;  Cell                  ;        ; 12    ; 3.324       ; 25         ; 0.000 ; 0.502 ;
++------------------------+--------+-------+-------------+------------+-------+-------+
+Note: Negative delays are omitted from totals when calculating percentages
+
++---------------------------------------------------------------------------------------------------------------------------------+
+; Data Arrival Path                                                                                                               ;
++----------+---------+----+------+--------+--------------------+------------------------------------------------------------------+
+; Total    ; Incr    ; RF ; Type ; Fanout ; Location           ; Element                                                          ;
++----------+---------+----+------+--------+--------------------+------------------------------------------------------------------+
+; 13.496   ; 13.496  ;    ;      ;        ;                    ; data path                                                        ;
+;   0.000  ;   0.000 ;    ;      ; 1      ; FF_X39_Y22_N13     ; vga_controller:control|column[2]                                 ;
+;   0.000  ;   0.000 ; FF ; CELL ; 1      ; FF_X39_Y22_N13     ; control|column[2]|q                                              ;
+;   0.370  ;   0.370 ; FF ; IC   ; 2      ; LCCOMB_X39_Y22_N12 ; comb_ckt|Add0~0|dataa                                            ;
+;   0.847  ;   0.477 ; FF ; CELL ; 1      ; LCCOMB_X39_Y22_N12 ; comb_ckt|Add0~0|cout                                             ;
+;   0.847  ;   0.000 ; FF ; IC   ; 2      ; LCCOMB_X39_Y22_N14 ; comb_ckt|Add0~2|cin                                              ;
+;   0.906  ;   0.059 ; FR ; CELL ; 1      ; LCCOMB_X39_Y22_N14 ; comb_ckt|Add0~2|cout                                             ;
+;   0.906  ;   0.000 ; RR ; IC   ; 2      ; LCCOMB_X39_Y22_N16 ; comb_ckt|Add0~4|cin                                              ;
+;   0.965  ;   0.059 ; RF ; CELL ; 1      ; LCCOMB_X39_Y22_N16 ; comb_ckt|Add0~4|cout                                             ;
+;   0.965  ;   0.000 ; FF ; IC   ; 2      ; LCCOMB_X39_Y22_N18 ; comb_ckt|Add0~6|cin                                              ;
+;   1.467  ;   0.502 ; FF ; CELL ; 208    ; LCCOMB_X39_Y22_N18 ; comb_ckt|Add0~6|combout                                          ;
+;   3.605  ;   2.138 ; FF ; IC   ; 1      ; LCCOMB_X47_Y16_N26 ; comb_ckt|vram_inst|Mux3~27|datab                                 ;
+;   4.038  ;   0.433 ; FR ; CELL ; 1      ; LCCOMB_X47_Y16_N26 ; comb_ckt|vram_inst|Mux3~27|combout                               ;
+;   4.776  ;   0.738 ; RR ; IC   ; 1      ; LCCOMB_X51_Y16_N0  ; comb_ckt|vram_inst|Mux3~28|dataa                                 ;
+;   5.198  ;   0.422 ; RR ; CELL ; 1      ; LCCOMB_X51_Y16_N0  ; comb_ckt|vram_inst|Mux3~28|combout                               ;
+;   7.232  ;   2.034 ; RR ; IC   ; 1      ; LCCOMB_X58_Y28_N26 ; comb_ckt|vram_inst|Mux3~29|datac                                 ;
+;   7.537  ;   0.305 ; RR ; CELL ; 1      ; LCCOMB_X58_Y28_N26 ; comb_ckt|vram_inst|Mux3~29|combout                               ;
+;   9.569  ;   2.032 ; RR ; IC   ; 1      ; LCCOMB_X46_Y20_N8  ; comb_ckt|vram_inst|Mux3~30|datab                                 ;
+;   9.992  ;   0.423 ; RR ; CELL ; 1      ; LCCOMB_X46_Y20_N8  ; comb_ckt|vram_inst|Mux3~30|combout                               ;
+;   10.958 ;   0.966 ; RR ; IC   ; 1      ; LCCOMB_X50_Y20_N0  ; comb_ckt|vram_inst|Mux3~41|datad                                 ;
+;   11.103 ;   0.145 ; RF ; CELL ; 1      ; LCCOMB_X50_Y20_N0  ; comb_ckt|vram_inst|Mux3~41|combout                               ;
+;   12.997 ;   1.894 ; FF ; IC   ; 1      ; LCCOMB_X43_Y26_N30 ; comb_ckt|vram_inst|Mux3~169|dataa                                ;
+;   13.402 ;   0.405 ; FF ; CELL ; 1      ; LCCOMB_X43_Y26_N30 ; comb_ckt|vram_inst|Mux3~169|combout                              ;
+;   13.402 ;   0.000 ; FF ; IC   ; 1      ; FF_X43_Y26_N31     ; comb_ckt|vram_inst|vga_char_out[4]|d                             ;
+;   13.496 ;   0.094 ; FF ; CELL ; 1      ; FF_X43_Y26_N31     ; comb_ckt_generator:comb_ckt|video_vram:vram_inst|vga_char_out[4] ;
++----------+---------+----+------+--------+--------------------+------------------------------------------------------------------+
+
+
+Path #8: Delay is 13.455
+===============================================================================
++------------------------------------------------------------------------------+
+; Path Summary                                                                 ;
++-----------+------------------------------------------------------------------+
+; Property  ; Value                                                            ;
++-----------+------------------------------------------------------------------+
+; From Node ; vga_controller:control|column[4]                                 ;
+; To Node   ; comb_ckt_generator:comb_ckt|video_vram:vram_inst|vga_char_out[0] ;
+; Delay     ; 13.455                                                           ;
++-----------+------------------------------------------------------------------+
+
++------------------------------------------------------------------------------------+
+; Statistics                                                                         ;
++------------------------+--------+-------+-------------+------------+-------+-------+
+; Property               ; Value  ; Count ; Total Delay ; % of Total ; Min   ; Max   ;
++------------------------+--------+-------+-------------+------------+-------+-------+
+; Data Delay             ; 13.455 ;       ;             ;            ;       ;       ;
+; Number of Logic Levels ;        ; 9     ;             ;            ;       ;       ;
+; Physical Delays        ;        ;       ;             ;            ;       ;       ;
+;  IC                    ;        ; 10    ; 9.925       ; 74         ; 0.204 ; 2.503 ;
+;  Cell                  ;        ; 11    ; 3.530       ; 26         ; 0.000 ; 0.424 ;
++------------------------+--------+-------+-------------+------------+-------+-------+
+Note: Negative delays are omitted from totals when calculating percentages
+
++---------------------------------------------------------------------------------------------------------------------------------+
+; Data Arrival Path                                                                                                               ;
++----------+---------+----+------+--------+--------------------+------------------------------------------------------------------+
+; Total    ; Incr    ; RF ; Type ; Fanout ; Location           ; Element                                                          ;
++----------+---------+----+------+--------+--------------------+------------------------------------------------------------------+
+; 13.455   ; 13.455  ;    ;      ;        ;                    ; data path                                                        ;
+;   0.000  ;   0.000 ;    ;      ; 1      ; FF_X39_Y22_N17     ; vga_controller:control|column[4]                                 ;
+;   0.000  ;   0.000 ; FF ; CELL ; 1      ; FF_X39_Y22_N17     ; control|column[4]|q                                              ;
+;   0.362  ;   0.362 ; FF ; IC   ; 2      ; LCCOMB_X39_Y22_N16 ; comb_ckt|Add0~4|datab                                            ;
+;   0.758  ;   0.396 ; FR ; CELL ; 227    ; LCCOMB_X39_Y22_N16 ; comb_ckt|Add0~4|combout                                          ;
+;   3.261  ;   2.503 ; RR ; IC   ; 1      ; LCCOMB_X51_Y18_N28 ; comb_ckt|vram_inst|Mux7~66|dataa                                 ;
+;   3.658  ;   0.397 ; RR ; CELL ; 1      ; LCCOMB_X51_Y18_N28 ; comb_ckt|vram_inst|Mux7~66|combout                               ;
+;   5.330  ;   1.672 ; RR ; IC   ; 1      ; LCCOMB_X58_Y24_N12 ; comb_ckt|vram_inst|Mux7~67|dataa                                 ;
+;   5.752  ;   0.422 ; RR ; CELL ; 1      ; LCCOMB_X58_Y24_N12 ; comb_ckt|vram_inst|Mux7~67|combout                               ;
+;   7.817  ;   2.065 ; RR ; IC   ; 1      ; LCCOMB_X41_Y25_N8  ; comb_ckt|vram_inst|Mux7~68|datac                                 ;
+;   8.122  ;   0.305 ; RR ; CELL ; 1      ; LCCOMB_X41_Y25_N8  ; comb_ckt|vram_inst|Mux7~68|combout                               ;
+;   9.157  ;   1.035 ; RR ; IC   ; 1      ; LCCOMB_X47_Y25_N2  ; comb_ckt|vram_inst|Mux7~71|dataa                                 ;
+;   9.579  ;   0.422 ; RR ; CELL ; 1      ; LCCOMB_X47_Y25_N2  ; comb_ckt|vram_inst|Mux7~71|combout                               ;
+;   9.784  ;   0.205 ; RR ; IC   ; 1      ; LCCOMB_X47_Y25_N20 ; comb_ckt|vram_inst|Mux7~72|datad                                 ;
+;   9.950  ;   0.166 ; RR ; CELL ; 1      ; LCCOMB_X47_Y25_N20 ; comb_ckt|vram_inst|Mux7~72|combout                               ;
+;   10.154 ;   0.204 ; RR ; IC   ; 1      ; LCCOMB_X47_Y25_N10 ; comb_ckt|vram_inst|Mux7~83|datad                                 ;
+;   10.320 ;   0.166 ; RR ; CELL ; 1      ; LCCOMB_X47_Y25_N10 ; comb_ckt|vram_inst|Mux7~83|combout                               ;
+;   11.330 ;   1.010 ; RR ; IC   ; 1      ; LCCOMB_X41_Y25_N18 ; comb_ckt|vram_inst|Mux7~126|dataa                                ;
+;   11.739 ;   0.409 ; RR ; CELL ; 1      ; LCCOMB_X41_Y25_N18 ; comb_ckt|vram_inst|Mux7~126|combout                              ;
+;   11.978 ;   0.239 ; RR ; IC   ; 1      ; LCCOMB_X41_Y25_N6  ; comb_ckt|vram_inst|Mux7~169|datab                                ;
+;   12.401 ;   0.423 ; RR ; CELL ; 1      ; LCCOMB_X41_Y25_N6  ; comb_ckt|vram_inst|Mux7~169|combout                              ;
+;   13.031 ;   0.630 ; RR ; IC   ; 1      ; FF_X42_Y25_N15     ; comb_ckt|vram_inst|vga_char_out[0]|asdata                        ;
+;   13.455 ;   0.424 ; RR ; CELL ; 1      ; FF_X42_Y25_N15     ; comb_ckt_generator:comb_ckt|video_vram:vram_inst|vga_char_out[0] ;
++----------+---------+----+------+--------+--------------------+------------------------------------------------------------------+
+
+
+Path #9: Delay is 13.384
+===============================================================================
++------------------------------------------------------------------------------+
+; Path Summary                                                                 ;
++-----------+------------------------------------------------------------------+
+; Property  ; Value                                                            ;
++-----------+------------------------------------------------------------------+
+; From Node ; vga_controller:control|column[2]                                 ;
+; To Node   ; comb_ckt_generator:comb_ckt|video_vram:vram_inst|vga_char_out[4] ;
+; Delay     ; 13.384                                                           ;
++-----------+------------------------------------------------------------------+
+
++------------------------------------------------------------------------------------+
+; Statistics                                                                         ;
++------------------------+--------+-------+-------------+------------+-------+-------+
+; Property               ; Value  ; Count ; Total Delay ; % of Total ; Min   ; Max   ;
++------------------------+--------+-------+-------------+------------+-------+-------+
+; Data Delay             ; 13.384 ;       ;             ;            ;       ;       ;
+; Number of Logic Levels ;        ; 8     ;             ;            ;       ;       ;
+; Physical Delays        ;        ;       ;             ;            ;       ;       ;
+;  IC                    ;        ; 13    ; 9.869       ; 74         ; 0.000 ; 2.032 ;
+;  Cell                  ;        ; 14    ; 3.515       ; 26         ; 0.000 ; 0.637 ;
++------------------------+--------+-------+-------------+------------+-------+-------+
+Note: Negative delays are omitted from totals when calculating percentages
+
++---------------------------------------------------------------------------------------------------------------------------------+
+; Data Arrival Path                                                                                                               ;
++----------+---------+----+------+--------+--------------------+------------------------------------------------------------------+
+; Total    ; Incr    ; RF ; Type ; Fanout ; Location           ; Element                                                          ;
++----------+---------+----+------+--------+--------------------+------------------------------------------------------------------+
+; 13.384   ; 13.384  ;    ;      ;        ;                    ; data path                                                        ;
+;   0.000  ;   0.000 ;    ;      ; 1      ; FF_X39_Y22_N13     ; vga_controller:control|column[2]                                 ;
+;   0.000  ;   0.000 ; FF ; CELL ; 1      ; FF_X39_Y22_N13     ; control|column[2]|q                                              ;
+;   0.370  ;   0.370 ; FF ; IC   ; 2      ; LCCOMB_X39_Y22_N12 ; comb_ckt|Add0~0|dataa                                            ;
+;   0.847  ;   0.477 ; FF ; CELL ; 1      ; LCCOMB_X39_Y22_N12 ; comb_ckt|Add0~0|cout                                             ;
+;   0.847  ;   0.000 ; FF ; IC   ; 2      ; LCCOMB_X39_Y22_N14 ; comb_ckt|Add0~2|cin                                              ;
+;   0.906  ;   0.059 ; FR ; CELL ; 1      ; LCCOMB_X39_Y22_N14 ; comb_ckt|Add0~2|cout                                             ;
+;   0.906  ;   0.000 ; RR ; IC   ; 2      ; LCCOMB_X39_Y22_N16 ; comb_ckt|Add0~4|cin                                              ;
+;   0.965  ;   0.059 ; RF ; CELL ; 1      ; LCCOMB_X39_Y22_N16 ; comb_ckt|Add0~4|cout                                             ;
+;   0.965  ;   0.000 ; FF ; IC   ; 2      ; LCCOMB_X39_Y22_N18 ; comb_ckt|Add0~6|cin                                              ;
+;   1.024  ;   0.059 ; FR ; CELL ; 1      ; LCCOMB_X39_Y22_N18 ; comb_ckt|Add0~6|cout                                             ;
+;   1.024  ;   0.000 ; RR ; IC   ; 2      ; LCCOMB_X39_Y22_N20 ; comb_ckt|Add0~8|cin                                              ;
+;   1.661  ;   0.637 ; RR ; CELL ; 209    ; LCCOMB_X39_Y22_N20 ; comb_ckt|Add0~8|combout                                          ;
+;   3.648  ;   1.987 ; RR ; IC   ; 1      ; LCCOMB_X50_Y19_N24 ; comb_ckt|vram_inst|Mux3~22|datab                                 ;
+;   4.050  ;   0.402 ; RR ; CELL ; 1      ; LCCOMB_X50_Y19_N24 ; comb_ckt|vram_inst|Mux3~22|combout                               ;
+;   5.044  ;   0.994 ; RR ; IC   ; 1      ; LCCOMB_X59_Y19_N24 ; comb_ckt|vram_inst|Mux3~23|datab                                 ;
+;   5.467  ;   0.423 ; RR ; CELL ; 1      ; LCCOMB_X59_Y19_N24 ; comb_ckt|vram_inst|Mux3~23|combout                               ;
+;   6.889  ;   1.422 ; RR ; IC   ; 1      ; LCCOMB_X58_Y28_N16 ; comb_ckt|vram_inst|Mux3~26|datad                                 ;
+;   7.055  ;   0.166 ; RR ; CELL ; 1      ; LCCOMB_X58_Y28_N16 ; comb_ckt|vram_inst|Mux3~26|combout                               ;
+;   7.259  ;   0.204 ; RR ; IC   ; 1      ; LCCOMB_X58_Y28_N26 ; comb_ckt|vram_inst|Mux3~29|datad                                 ;
+;   7.425  ;   0.166 ; RR ; CELL ; 1      ; LCCOMB_X58_Y28_N26 ; comb_ckt|vram_inst|Mux3~29|combout                               ;
+;   9.457  ;   2.032 ; RR ; IC   ; 1      ; LCCOMB_X46_Y20_N8  ; comb_ckt|vram_inst|Mux3~30|datab                                 ;
+;   9.880  ;   0.423 ; RR ; CELL ; 1      ; LCCOMB_X46_Y20_N8  ; comb_ckt|vram_inst|Mux3~30|combout                               ;
+;   10.846 ;   0.966 ; RR ; IC   ; 1      ; LCCOMB_X50_Y20_N0  ; comb_ckt|vram_inst|Mux3~41|datad                                 ;
+;   10.991 ;   0.145 ; RF ; CELL ; 1      ; LCCOMB_X50_Y20_N0  ; comb_ckt|vram_inst|Mux3~41|combout                               ;
+;   12.885 ;   1.894 ; FF ; IC   ; 1      ; LCCOMB_X43_Y26_N30 ; comb_ckt|vram_inst|Mux3~169|dataa                                ;
+;   13.290 ;   0.405 ; FF ; CELL ; 1      ; LCCOMB_X43_Y26_N30 ; comb_ckt|vram_inst|Mux3~169|combout                              ;
+;   13.290 ;   0.000 ; FF ; IC   ; 1      ; FF_X43_Y26_N31     ; comb_ckt|vram_inst|vga_char_out[4]|d                             ;
+;   13.384 ;   0.094 ; FF ; CELL ; 1      ; FF_X43_Y26_N31     ; comb_ckt_generator:comb_ckt|video_vram:vram_inst|vga_char_out[4] ;
++----------+---------+----+------+--------+--------------------+------------------------------------------------------------------+
+
+
+Path #10: Delay is 13.374
+===============================================================================
++------------------------------------------------------------------------------+
+; Path Summary                                                                 ;
++-----------+------------------------------------------------------------------+
+; Property  ; Value                                                            ;
++-----------+------------------------------------------------------------------+
+; From Node ; vga_controller:control|column[4]                                 ;
+; To Node   ; comb_ckt_generator:comb_ckt|video_vram:vram_inst|vga_char_out[4] ;
+; Delay     ; 13.374                                                           ;
++-----------+------------------------------------------------------------------+
+
++------------------------------------------------------------------------------------+
+; Statistics                                                                         ;
++------------------------+--------+-------+-------------+------------+-------+-------+
+; Property               ; Value  ; Count ; Total Delay ; % of Total ; Min   ; Max   ;
++------------------------+--------+-------+-------------+------------+-------+-------+
+; Data Delay             ; 13.374 ;       ;             ;            ;       ;       ;
+; Number of Logic Levels ;        ; 7     ;             ;            ;       ;       ;
+; Physical Delays        ;        ;       ;             ;            ;       ;       ;
+;  IC                    ;        ; 9     ; 10.164      ; 76         ; 0.000 ; 2.138 ;
+;  Cell                  ;        ; 10    ; 3.210       ; 24         ; 0.000 ; 0.502 ;
++------------------------+--------+-------+-------------+------------+-------+-------+
+Note: Negative delays are omitted from totals when calculating percentages
+
++---------------------------------------------------------------------------------------------------------------------------------+
+; Data Arrival Path                                                                                                               ;
++----------+---------+----+------+--------+--------------------+------------------------------------------------------------------+
+; Total    ; Incr    ; RF ; Type ; Fanout ; Location           ; Element                                                          ;
++----------+---------+----+------+--------+--------------------+------------------------------------------------------------------+
+; 13.374   ; 13.374  ;    ;      ;        ;                    ; data path                                                        ;
+;   0.000  ;   0.000 ;    ;      ; 1      ; FF_X39_Y22_N17     ; vga_controller:control|column[4]                                 ;
+;   0.000  ;   0.000 ; FF ; CELL ; 1      ; FF_X39_Y22_N17     ; control|column[4]|q                                              ;
+;   0.362  ;   0.362 ; FF ; IC   ; 2      ; LCCOMB_X39_Y22_N16 ; comb_ckt|Add0~4|datab                                            ;
+;   0.843  ;   0.481 ; FF ; CELL ; 1      ; LCCOMB_X39_Y22_N16 ; comb_ckt|Add0~4|cout                                             ;
+;   0.843  ;   0.000 ; FF ; IC   ; 2      ; LCCOMB_X39_Y22_N18 ; comb_ckt|Add0~6|cin                                              ;
+;   1.345  ;   0.502 ; FF ; CELL ; 208    ; LCCOMB_X39_Y22_N18 ; comb_ckt|Add0~6|combout                                          ;
+;   3.483  ;   2.138 ; FF ; IC   ; 1      ; LCCOMB_X47_Y16_N26 ; comb_ckt|vram_inst|Mux3~27|datab                                 ;
+;   3.916  ;   0.433 ; FR ; CELL ; 1      ; LCCOMB_X47_Y16_N26 ; comb_ckt|vram_inst|Mux3~27|combout                               ;
+;   4.654  ;   0.738 ; RR ; IC   ; 1      ; LCCOMB_X51_Y16_N0  ; comb_ckt|vram_inst|Mux3~28|dataa                                 ;
+;   5.076  ;   0.422 ; RR ; CELL ; 1      ; LCCOMB_X51_Y16_N0  ; comb_ckt|vram_inst|Mux3~28|combout                               ;
+;   7.110  ;   2.034 ; RR ; IC   ; 1      ; LCCOMB_X58_Y28_N26 ; comb_ckt|vram_inst|Mux3~29|datac                                 ;
+;   7.415  ;   0.305 ; RR ; CELL ; 1      ; LCCOMB_X58_Y28_N26 ; comb_ckt|vram_inst|Mux3~29|combout                               ;
+;   9.447  ;   2.032 ; RR ; IC   ; 1      ; LCCOMB_X46_Y20_N8  ; comb_ckt|vram_inst|Mux3~30|datab                                 ;
+;   9.870  ;   0.423 ; RR ; CELL ; 1      ; LCCOMB_X46_Y20_N8  ; comb_ckt|vram_inst|Mux3~30|combout                               ;
+;   10.836 ;   0.966 ; RR ; IC   ; 1      ; LCCOMB_X50_Y20_N0  ; comb_ckt|vram_inst|Mux3~41|datad                                 ;
+;   10.981 ;   0.145 ; RF ; CELL ; 1      ; LCCOMB_X50_Y20_N0  ; comb_ckt|vram_inst|Mux3~41|combout                               ;
+;   12.875 ;   1.894 ; FF ; IC   ; 1      ; LCCOMB_X43_Y26_N30 ; comb_ckt|vram_inst|Mux3~169|dataa                                ;
+;   13.280 ;   0.405 ; FF ; CELL ; 1      ; LCCOMB_X43_Y26_N30 ; comb_ckt|vram_inst|Mux3~169|combout                              ;
+;   13.280 ;   0.000 ; FF ; IC   ; 1      ; FF_X43_Y26_N31     ; comb_ckt|vram_inst|vga_char_out[4]|d                             ;
+;   13.374 ;   0.094 ; FF ; CELL ; 1      ; FF_X43_Y26_N31     ; comb_ckt_generator:comb_ckt|video_vram:vram_inst|vga_char_out[4] ;
++----------+---------+----+------+--------+--------------------+------------------------------------------------------------------+
+
+
+Path #11: Delay is 13.286
+===============================================================================
++------------------------------------------------------------------------------+
+; Path Summary                                                                 ;
++-----------+------------------------------------------------------------------+
+; Property  ; Value                                                            ;
++-----------+------------------------------------------------------------------+
+; From Node ; vga_controller:control|column[2]                                 ;
+; To Node   ; comb_ckt_generator:comb_ckt|video_vram:vram_inst|vga_char_out[0] ;
+; Delay     ; 13.286                                                           ;
++-----------+------------------------------------------------------------------+
+
++------------------------------------------------------------------------------------+
+; Statistics                                                                         ;
++------------------------+--------+-------+-------------+------------+-------+-------+
+; Property               ; Value  ; Count ; Total Delay ; % of Total ; Min   ; Max   ;
++------------------------+--------+-------+-------------+------------+-------+-------+
+; Data Delay             ; 13.286 ;       ;             ;            ;       ;       ;
+; Number of Logic Levels ;        ; 8     ;             ;            ;       ;       ;
+; Physical Delays        ;        ;       ;             ;            ;       ;       ;
+;  IC                    ;        ; 11    ; 9.094       ; 68         ; 0.000 ; 2.301 ;
+;  Cell                  ;        ; 12    ; 4.192       ; 32         ; 0.000 ; 0.637 ;
++------------------------+--------+-------+-------------+------------+-------+-------+
+Note: Negative delays are omitted from totals when calculating percentages
+
++---------------------------------------------------------------------------------------------------------------------------------+
+; Data Arrival Path                                                                                                               ;
++----------+---------+----+------+--------+--------------------+------------------------------------------------------------------+
+; Total    ; Incr    ; RF ; Type ; Fanout ; Location           ; Element                                                          ;
++----------+---------+----+------+--------+--------------------+------------------------------------------------------------------+
+; 13.286   ; 13.286  ;    ;      ;        ;                    ; data path                                                        ;
+;   0.000  ;   0.000 ;    ;      ; 1      ; FF_X39_Y22_N13     ; vga_controller:control|column[2]                                 ;
+;   0.000  ;   0.000 ; FF ; CELL ; 1      ; FF_X39_Y22_N13     ; control|column[2]|q                                              ;
+;   0.370  ;   0.370 ; FF ; IC   ; 2      ; LCCOMB_X39_Y22_N12 ; comb_ckt|Add0~0|dataa                                            ;
+;   0.847  ;   0.477 ; FF ; CELL ; 1      ; LCCOMB_X39_Y22_N12 ; comb_ckt|Add0~0|cout                                             ;
+;   0.847  ;   0.000 ; FF ; IC   ; 2      ; LCCOMB_X39_Y22_N14 ; comb_ckt|Add0~2|cin                                              ;
+;   0.906  ;   0.059 ; FR ; CELL ; 1      ; LCCOMB_X39_Y22_N14 ; comb_ckt|Add0~2|cout                                             ;
+;   0.906  ;   0.000 ; RR ; IC   ; 2      ; LCCOMB_X39_Y22_N16 ; comb_ckt|Add0~4|cin                                              ;
+;   1.543  ;   0.637 ; RR ; CELL ; 227    ; LCCOMB_X39_Y22_N16 ; comb_ckt|Add0~4|combout                                          ;
+;   3.844  ;   2.301 ; RR ; IC   ; 1      ; LCCOMB_X54_Y18_N4  ; comb_ckt|vram_inst|Mux7~59|datab                                 ;
+;   4.246  ;   0.402 ; RR ; CELL ; 1      ; LCCOMB_X54_Y18_N4  ; comb_ckt|vram_inst|Mux7~59|combout                               ;
+;   5.401  ;   1.155 ; RR ; IC   ; 1      ; LCCOMB_X51_Y15_N30 ; comb_ckt|vram_inst|Mux7~60|dataa                                 ;
+;   5.823  ;   0.422 ; RR ; CELL ; 1      ; LCCOMB_X51_Y15_N30 ; comb_ckt|vram_inst|Mux7~60|combout                               ;
+;   7.565  ;   1.742 ; RR ; IC   ; 1      ; LCCOMB_X57_Y21_N30 ; comb_ckt|vram_inst|Mux7~61|datab                                 ;
+;   7.936  ;   0.371 ; RR ; CELL ; 1      ; LCCOMB_X57_Y21_N30 ; comb_ckt|vram_inst|Mux7~61|combout                               ;
+;   9.379  ;   1.443 ; RR ; IC   ; 1      ; LCCOMB_X47_Y25_N20 ; comb_ckt|vram_inst|Mux7~72|datab                                 ;
+;   9.781  ;   0.402 ; RR ; CELL ; 1      ; LCCOMB_X47_Y25_N20 ; comb_ckt|vram_inst|Mux7~72|combout                               ;
+;   9.985  ;   0.204 ; RR ; IC   ; 1      ; LCCOMB_X47_Y25_N10 ; comb_ckt|vram_inst|Mux7~83|datad                                 ;
+;   10.151 ;   0.166 ; RR ; CELL ; 1      ; LCCOMB_X47_Y25_N10 ; comb_ckt|vram_inst|Mux7~83|combout                               ;
+;   11.161 ;   1.010 ; RR ; IC   ; 1      ; LCCOMB_X41_Y25_N18 ; comb_ckt|vram_inst|Mux7~126|dataa                                ;
+;   11.570 ;   0.409 ; RR ; CELL ; 1      ; LCCOMB_X41_Y25_N18 ; comb_ckt|vram_inst|Mux7~126|combout                              ;
+;   11.809 ;   0.239 ; RR ; IC   ; 1      ; LCCOMB_X41_Y25_N6  ; comb_ckt|vram_inst|Mux7~169|datab                                ;
+;   12.232 ;   0.423 ; RR ; CELL ; 1      ; LCCOMB_X41_Y25_N6  ; comb_ckt|vram_inst|Mux7~169|combout                              ;
+;   12.862 ;   0.630 ; RR ; IC   ; 1      ; FF_X42_Y25_N15     ; comb_ckt|vram_inst|vga_char_out[0]|asdata                        ;
+;   13.286 ;   0.424 ; RR ; CELL ; 1      ; FF_X42_Y25_N15     ; comb_ckt_generator:comb_ckt|video_vram:vram_inst|vga_char_out[0] ;
++----------+---------+----+------+--------+--------------------+------------------------------------------------------------------+
+
+
+Path #12: Delay is 13.279
+===============================================================================
++------------------------------------------------------------------------------+
+; Path Summary                                                                 ;
++-----------+------------------------------------------------------------------+
+; Property  ; Value                                                            ;
++-----------+------------------------------------------------------------------+
+; From Node ; vga_controller:control|column[3]                                 ;
+; To Node   ; comb_ckt_generator:comb_ckt|video_vram:vram_inst|vga_char_out[4] ;
+; Delay     ; 13.279                                                           ;
++-----------+------------------------------------------------------------------+
+
++------------------------------------------------------------------------------------+
+; Statistics                                                                         ;
++------------------------+--------+-------+-------------+------------+-------+-------+
+; Property               ; Value  ; Count ; Total Delay ; % of Total ; Min   ; Max   ;
++------------------------+--------+-------+-------------+------------+-------+-------+
+; Data Delay             ; 13.279 ;       ;             ;            ;       ;       ;
+; Number of Logic Levels ;        ; 8     ;             ;            ;       ;       ;
+; Physical Delays        ;        ;       ;             ;            ;       ;       ;
+;  IC                    ;        ; 11    ; 9.598       ; 72         ; 0.000 ; 2.681 ;
+;  Cell                  ;        ; 12    ; 3.681       ; 28         ; 0.000 ; 0.637 ;
++------------------------+--------+-------+-------------+------------+-------+-------+
+Note: Negative delays are omitted from totals when calculating percentages
+
++---------------------------------------------------------------------------------------------------------------------------------+
+; Data Arrival Path                                                                                                               ;
++----------+---------+----+------+--------+--------------------+------------------------------------------------------------------+
+; Total    ; Incr    ; RF ; Type ; Fanout ; Location           ; Element                                                          ;
++----------+---------+----+------+--------+--------------------+------------------------------------------------------------------+
+; 13.279   ; 13.279  ;    ;      ;        ;                    ; data path                                                        ;
+;   0.000  ;   0.000 ;    ;      ; 1      ; FF_X39_Y22_N15     ; vga_controller:control|column[3]                                 ;
+;   0.000  ;   0.000 ; RR ; CELL ; 1      ; FF_X39_Y22_N15     ; control|column[3]|q                                              ;
+;   0.278  ;   0.278 ; RR ; IC   ; 2      ; LCCOMB_X39_Y22_N14 ; comb_ckt|Add0~2|datab                                            ;
+;   0.802  ;   0.524 ; RF ; CELL ; 1      ; LCCOMB_X39_Y22_N14 ; comb_ckt|Add0~2|cout                                             ;
+;   0.802  ;   0.000 ; FF ; IC   ; 2      ; LCCOMB_X39_Y22_N16 ; comb_ckt|Add0~4|cin                                              ;
+;   0.861  ;   0.059 ; FR ; CELL ; 1      ; LCCOMB_X39_Y22_N16 ; comb_ckt|Add0~4|cout                                             ;
+;   0.861  ;   0.000 ; RR ; IC   ; 2      ; LCCOMB_X39_Y22_N18 ; comb_ckt|Add0~6|cin                                              ;
+;   1.498  ;   0.637 ; RR ; CELL ; 208    ; LCCOMB_X39_Y22_N18 ; comb_ckt|Add0~6|combout                                          ;
+;   4.179  ;   2.681 ; RR ; IC   ; 1      ; LCCOMB_X56_Y26_N8  ; comb_ckt|vram_inst|Mux3~24|datab                                 ;
+;   4.604  ;   0.425 ; RF ; CELL ; 1      ; LCCOMB_X56_Y26_N8  ; comb_ckt|vram_inst|Mux3~24|combout                               ;
+;   5.369  ;   0.765 ; FF ; IC   ; 1      ; LCCOMB_X57_Y24_N16 ; comb_ckt|vram_inst|Mux3~25|datab                                 ;
+;   5.773  ;   0.404 ; FF ; CELL ; 1      ; LCCOMB_X57_Y24_N16 ; comb_ckt|vram_inst|Mux3~25|combout                               ;
+;   6.521  ;   0.748 ; FF ; IC   ; 1      ; LCCOMB_X58_Y28_N16 ; comb_ckt|vram_inst|Mux3~26|datab                                 ;
+;   6.925  ;   0.404 ; FF ; CELL ; 1      ; LCCOMB_X58_Y28_N16 ; comb_ckt|vram_inst|Mux3~26|combout                               ;
+;   7.159  ;   0.234 ; FF ; IC   ; 1      ; LCCOMB_X58_Y28_N26 ; comb_ckt|vram_inst|Mux3~29|datad                                 ;
+;   7.320  ;   0.161 ; FR ; CELL ; 1      ; LCCOMB_X58_Y28_N26 ; comb_ckt|vram_inst|Mux3~29|combout                               ;
+;   9.352  ;   2.032 ; RR ; IC   ; 1      ; LCCOMB_X46_Y20_N8  ; comb_ckt|vram_inst|Mux3~30|datab                                 ;
+;   9.775  ;   0.423 ; RR ; CELL ; 1      ; LCCOMB_X46_Y20_N8  ; comb_ckt|vram_inst|Mux3~30|combout                               ;
+;   10.741 ;   0.966 ; RR ; IC   ; 1      ; LCCOMB_X50_Y20_N0  ; comb_ckt|vram_inst|Mux3~41|datad                                 ;
+;   10.886 ;   0.145 ; RF ; CELL ; 1      ; LCCOMB_X50_Y20_N0  ; comb_ckt|vram_inst|Mux3~41|combout                               ;
+;   12.780 ;   1.894 ; FF ; IC   ; 1      ; LCCOMB_X43_Y26_N30 ; comb_ckt|vram_inst|Mux3~169|dataa                                ;
+;   13.185 ;   0.405 ; FF ; CELL ; 1      ; LCCOMB_X43_Y26_N30 ; comb_ckt|vram_inst|Mux3~169|combout                              ;
+;   13.185 ;   0.000 ; FF ; IC   ; 1      ; FF_X43_Y26_N31     ; comb_ckt|vram_inst|vga_char_out[4]|d                             ;
+;   13.279 ;   0.094 ; FF ; CELL ; 1      ; FF_X43_Y26_N31     ; comb_ckt_generator:comb_ckt|video_vram:vram_inst|vga_char_out[4] ;
++----------+---------+----+------+--------+--------------------+------------------------------------------------------------------+
+
+
+Path #13: Delay is 13.272
+===============================================================================
++------------------------------------------------------------------------------+
+; Path Summary                                                                 ;
++-----------+------------------------------------------------------------------+
+; Property  ; Value                                                            ;
++-----------+------------------------------------------------------------------+
+; From Node ; vga_controller:control|column[2]                                 ;
+; To Node   ; comb_ckt_generator:comb_ckt|video_vram:vram_inst|vga_char_out[5] ;
+; Delay     ; 13.272                                                           ;
++-----------+------------------------------------------------------------------+
+
++------------------------------------------------------------------------------------+
+; Statistics                                                                         ;
++------------------------+--------+-------+-------------+------------+-------+-------+
+; Property               ; Value  ; Count ; Total Delay ; % of Total ; Min   ; Max   ;
++------------------------+--------+-------+-------------+------------+-------+-------+
+; Data Delay             ; 13.272 ;       ;             ;            ;       ;       ;
+; Number of Logic Levels ;        ; 9     ;             ;            ;       ;       ;
+; Physical Delays        ;        ;       ;             ;            ;       ;       ;
+;  IC                    ;        ; 11    ; 9.335       ; 70         ; 0.000 ; 2.076 ;
+;  Cell                  ;        ; 12    ; 3.937       ; 30         ; 0.000 ; 0.502 ;
++------------------------+--------+-------+-------------+------------+-------+-------+
+Note: Negative delays are omitted from totals when calculating percentages
+
++---------------------------------------------------------------------------------------------------------------------------------+
+; Data Arrival Path                                                                                                               ;
++----------+---------+----+------+--------+--------------------+------------------------------------------------------------------+
+; Total    ; Incr    ; RF ; Type ; Fanout ; Location           ; Element                                                          ;
++----------+---------+----+------+--------+--------------------+------------------------------------------------------------------+
+; 13.272   ; 13.272  ;    ;      ;        ;                    ; data path                                                        ;
+;   0.000  ;   0.000 ;    ;      ; 1      ; FF_X39_Y22_N13     ; vga_controller:control|column[2]                                 ;
+;   0.000  ;   0.000 ; FF ; CELL ; 1      ; FF_X39_Y22_N13     ; control|column[2]|q                                              ;
+;   0.370  ;   0.370 ; FF ; IC   ; 2      ; LCCOMB_X39_Y22_N12 ; comb_ckt|Add0~0|dataa                                            ;
+;   0.847  ;   0.477 ; FF ; CELL ; 1      ; LCCOMB_X39_Y22_N12 ; comb_ckt|Add0~0|cout                                             ;
+;   0.847  ;   0.000 ; FF ; IC   ; 2      ; LCCOMB_X39_Y22_N14 ; comb_ckt|Add0~2|cin                                              ;
+;   1.349  ;   0.502 ; FF ; CELL ; 226    ; LCCOMB_X39_Y22_N14 ; comb_ckt|Add0~2|combout                                          ;
+;   3.425  ;   2.076 ; FF ; IC   ; 1      ; LCCOMB_X49_Y28_N8  ; comb_ckt|vram_inst|Mux2~96|dataa                                 ;
+;   3.853  ;   0.428 ; FF ; CELL ; 1      ; LCCOMB_X49_Y28_N8  ; comb_ckt|vram_inst|Mux2~96|combout                               ;
+;   4.903  ;   1.050 ; FF ; IC   ; 1      ; LCCOMB_X50_Y25_N26 ; comb_ckt|vram_inst|Mux2~97|dataa                                 ;
+;   5.319  ;   0.416 ; FR ; CELL ; 1      ; LCCOMB_X50_Y25_N26 ; comb_ckt|vram_inst|Mux2~97|combout                               ;
+;   6.995  ;   1.676 ; RR ; IC   ; 1      ; LCCOMB_X56_Y20_N2  ; comb_ckt|vram_inst|Mux2~100|datab                                ;
+;   7.397  ;   0.402 ; RR ; CELL ; 1      ; LCCOMB_X56_Y20_N2  ; comb_ckt|vram_inst|Mux2~100|combout                              ;
+;   8.151  ;   0.754 ; RR ; IC   ; 1      ; LCCOMB_X56_Y19_N26 ; comb_ckt|vram_inst|Mux2~103|datac                                ;
+;   8.456  ;   0.305 ; RR ; CELL ; 1      ; LCCOMB_X56_Y19_N26 ; comb_ckt|vram_inst|Mux2~103|combout                              ;
+;   10.468 ;   2.012 ; RR ; IC   ; 1      ; LCCOMB_X46_Y25_N16 ; comb_ckt|vram_inst|Mux2~114|datac                                ;
+;   10.773 ;   0.305 ; RR ; CELL ; 1      ; LCCOMB_X46_Y25_N16 ; comb_ckt|vram_inst|Mux2~114|combout                              ;
+;   11.012 ;   0.239 ; RR ; IC   ; 1      ; LCCOMB_X46_Y25_N2  ; comb_ckt|vram_inst|Mux2~125|datab                                ;
+;   11.461 ;   0.449 ; RF ; CELL ; 1      ; LCCOMB_X46_Y25_N2  ; comb_ckt|vram_inst|Mux2~125|combout                              ;
+;   11.700 ;   0.239 ; FF ; IC   ; 1      ; LCCOMB_X46_Y25_N28 ; comb_ckt|vram_inst|Mux2~126|datad                                ;
+;   11.831 ;   0.131 ; FF ; CELL ; 1      ; LCCOMB_X46_Y25_N28 ; comb_ckt|vram_inst|Mux2~126|combout                              ;
+;   12.750 ;   0.919 ; FF ; IC   ; 1      ; LCCOMB_X41_Y25_N12 ; comb_ckt|vram_inst|Mux2~169|dataa                                ;
+;   13.178 ;   0.428 ; FF ; CELL ; 1      ; LCCOMB_X41_Y25_N12 ; comb_ckt|vram_inst|Mux2~169|combout                              ;
+;   13.178 ;   0.000 ; FF ; IC   ; 1      ; FF_X41_Y25_N13     ; comb_ckt|vram_inst|vga_char_out[5]|d                             ;
+;   13.272 ;   0.094 ; FF ; CELL ; 1      ; FF_X41_Y25_N13     ; comb_ckt_generator:comb_ckt|video_vram:vram_inst|vga_char_out[5] ;
++----------+---------+----+------+--------+--------------------+------------------------------------------------------------------+
+
+
+Path #14: Delay is 13.262
+===============================================================================
++------------------------------------------------------------------------------+
+; Path Summary                                                                 ;
++-----------+------------------------------------------------------------------+
+; Property  ; Value                                                            ;
++-----------+------------------------------------------------------------------+
+; From Node ; vga_controller:control|column[4]                                 ;
+; To Node   ; comb_ckt_generator:comb_ckt|video_vram:vram_inst|vga_char_out[4] ;
+; Delay     ; 13.262                                                           ;
++-----------+------------------------------------------------------------------+
+
++------------------------------------------------------------------------------------+
+; Statistics                                                                         ;
++------------------------+--------+-------+-------------+------------+-------+-------+
+; Property               ; Value  ; Count ; Total Delay ; % of Total ; Min   ; Max   ;
++------------------------+--------+-------+-------------+------------+-------+-------+
+; Data Delay             ; 13.262 ;       ;             ;            ;       ;       ;
+; Number of Logic Levels ;        ; 8     ;             ;            ;       ;       ;
+; Physical Delays        ;        ;       ;             ;            ;       ;       ;
+;  IC                    ;        ; 11    ; 9.861       ; 74         ; 0.000 ; 2.032 ;
+;  Cell                  ;        ; 12    ; 3.401       ; 26         ; 0.000 ; 0.637 ;
++------------------------+--------+-------+-------------+------------+-------+-------+
+Note: Negative delays are omitted from totals when calculating percentages
+
++---------------------------------------------------------------------------------------------------------------------------------+
+; Data Arrival Path                                                                                                               ;
++----------+---------+----+------+--------+--------------------+------------------------------------------------------------------+
+; Total    ; Incr    ; RF ; Type ; Fanout ; Location           ; Element                                                          ;
++----------+---------+----+------+--------+--------------------+------------------------------------------------------------------+
+; 13.262   ; 13.262  ;    ;      ;        ;                    ; data path                                                        ;
+;   0.000  ;   0.000 ;    ;      ; 1      ; FF_X39_Y22_N17     ; vga_controller:control|column[4]                                 ;
+;   0.000  ;   0.000 ; FF ; CELL ; 1      ; FF_X39_Y22_N17     ; control|column[4]|q                                              ;
+;   0.362  ;   0.362 ; FF ; IC   ; 2      ; LCCOMB_X39_Y22_N16 ; comb_ckt|Add0~4|datab                                            ;
+;   0.843  ;   0.481 ; FF ; CELL ; 1      ; LCCOMB_X39_Y22_N16 ; comb_ckt|Add0~4|cout                                             ;
+;   0.843  ;   0.000 ; FF ; IC   ; 2      ; LCCOMB_X39_Y22_N18 ; comb_ckt|Add0~6|cin                                              ;
+;   0.902  ;   0.059 ; FR ; CELL ; 1      ; LCCOMB_X39_Y22_N18 ; comb_ckt|Add0~6|cout                                             ;
+;   0.902  ;   0.000 ; RR ; IC   ; 2      ; LCCOMB_X39_Y22_N20 ; comb_ckt|Add0~8|cin                                              ;
+;   1.539  ;   0.637 ; RR ; CELL ; 209    ; LCCOMB_X39_Y22_N20 ; comb_ckt|Add0~8|combout                                          ;
+;   3.526  ;   1.987 ; RR ; IC   ; 1      ; LCCOMB_X50_Y19_N24 ; comb_ckt|vram_inst|Mux3~22|datab                                 ;
+;   3.928  ;   0.402 ; RR ; CELL ; 1      ; LCCOMB_X50_Y19_N24 ; comb_ckt|vram_inst|Mux3~22|combout                               ;
+;   4.922  ;   0.994 ; RR ; IC   ; 1      ; LCCOMB_X59_Y19_N24 ; comb_ckt|vram_inst|Mux3~23|datab                                 ;
+;   5.345  ;   0.423 ; RR ; CELL ; 1      ; LCCOMB_X59_Y19_N24 ; comb_ckt|vram_inst|Mux3~23|combout                               ;
+;   6.767  ;   1.422 ; RR ; IC   ; 1      ; LCCOMB_X58_Y28_N16 ; comb_ckt|vram_inst|Mux3~26|datad                                 ;
+;   6.933  ;   0.166 ; RR ; CELL ; 1      ; LCCOMB_X58_Y28_N16 ; comb_ckt|vram_inst|Mux3~26|combout                               ;
+;   7.137  ;   0.204 ; RR ; IC   ; 1      ; LCCOMB_X58_Y28_N26 ; comb_ckt|vram_inst|Mux3~29|datad                                 ;
+;   7.303  ;   0.166 ; RR ; CELL ; 1      ; LCCOMB_X58_Y28_N26 ; comb_ckt|vram_inst|Mux3~29|combout                               ;
+;   9.335  ;   2.032 ; RR ; IC   ; 1      ; LCCOMB_X46_Y20_N8  ; comb_ckt|vram_inst|Mux3~30|datab                                 ;
+;   9.758  ;   0.423 ; RR ; CELL ; 1      ; LCCOMB_X46_Y20_N8  ; comb_ckt|vram_inst|Mux3~30|combout                               ;
+;   10.724 ;   0.966 ; RR ; IC   ; 1      ; LCCOMB_X50_Y20_N0  ; comb_ckt|vram_inst|Mux3~41|datad                                 ;
+;   10.869 ;   0.145 ; RF ; CELL ; 1      ; LCCOMB_X50_Y20_N0  ; comb_ckt|vram_inst|Mux3~41|combout                               ;
+;   12.763 ;   1.894 ; FF ; IC   ; 1      ; LCCOMB_X43_Y26_N30 ; comb_ckt|vram_inst|Mux3~169|dataa                                ;
+;   13.168 ;   0.405 ; FF ; CELL ; 1      ; LCCOMB_X43_Y26_N30 ; comb_ckt|vram_inst|Mux3~169|combout                              ;
+;   13.168 ;   0.000 ; FF ; IC   ; 1      ; FF_X43_Y26_N31     ; comb_ckt|vram_inst|vga_char_out[4]|d                             ;
+;   13.262 ;   0.094 ; FF ; CELL ; 1      ; FF_X43_Y26_N31     ; comb_ckt_generator:comb_ckt|video_vram:vram_inst|vga_char_out[4] ;
++----------+---------+----+------+--------+--------------------+------------------------------------------------------------------+
+
+
+Path #15: Delay is 13.233
+===============================================================================
++------------------------------------------------------------------------------+
+; Path Summary                                                                 ;
++-----------+------------------------------------------------------------------+
+; Property  ; Value                                                            ;
++-----------+------------------------------------------------------------------+
+; From Node ; vga_controller:control|column[3]                                 ;
+; To Node   ; comb_ckt_generator:comb_ckt|video_vram:vram_inst|vga_char_out[4] ;
+; Delay     ; 13.233                                                           ;
++-----------+------------------------------------------------------------------+
+
++------------------------------------------------------------------------------------+
+; Statistics                                                                         ;
++------------------------+--------+-------+-------------+------------+-------+-------+
+; Property               ; Value  ; Count ; Total Delay ; % of Total ; Min   ; Max   ;
++------------------------+--------+-------+-------------+------------+-------+-------+
+; Data Delay             ; 13.233 ;       ;             ;            ;       ;       ;
+; Number of Logic Levels ;        ; 8     ;             ;            ;       ;       ;
+; Physical Delays        ;        ;       ;             ;            ;       ;       ;
+;  IC                    ;        ; 12    ; 9.861       ; 75         ; 0.000 ; 2.032 ;
+;  Cell                  ;        ; 13    ; 3.372       ; 25         ; 0.000 ; 0.637 ;
++------------------------+--------+-------+-------------+------------+-------+-------+
+Note: Negative delays are omitted from totals when calculating percentages
+
++---------------------------------------------------------------------------------------------------------------------------------+
+; Data Arrival Path                                                                                                               ;
++----------+---------+----+------+--------+--------------------+------------------------------------------------------------------+
+; Total    ; Incr    ; RF ; Type ; Fanout ; Location           ; Element                                                          ;
++----------+---------+----+------+--------+--------------------+------------------------------------------------------------------+
+; 13.233   ; 13.233  ;    ;      ;        ;                    ; data path                                                        ;
+;   0.000  ;   0.000 ;    ;      ; 1      ; FF_X39_Y22_N15     ; vga_controller:control|column[3]                                 ;
+;   0.000  ;   0.000 ; FF ; CELL ; 1      ; FF_X39_Y22_N15     ; control|column[3]|q                                              ;
+;   0.362  ;   0.362 ; FF ; IC   ; 2      ; LCCOMB_X39_Y22_N14 ; comb_ckt|Add0~2|datab                                            ;
+;   0.755  ;   0.393 ; FR ; CELL ; 1      ; LCCOMB_X39_Y22_N14 ; comb_ckt|Add0~2|cout                                             ;
+;   0.755  ;   0.000 ; RR ; IC   ; 2      ; LCCOMB_X39_Y22_N16 ; comb_ckt|Add0~4|cin                                              ;
+;   0.814  ;   0.059 ; RF ; CELL ; 1      ; LCCOMB_X39_Y22_N16 ; comb_ckt|Add0~4|cout                                             ;
+;   0.814  ;   0.000 ; FF ; IC   ; 2      ; LCCOMB_X39_Y22_N18 ; comb_ckt|Add0~6|cin                                              ;
+;   0.873  ;   0.059 ; FR ; CELL ; 1      ; LCCOMB_X39_Y22_N18 ; comb_ckt|Add0~6|cout                                             ;
+;   0.873  ;   0.000 ; RR ; IC   ; 2      ; LCCOMB_X39_Y22_N20 ; comb_ckt|Add0~8|cin                                              ;
+;   1.510  ;   0.637 ; RR ; CELL ; 209    ; LCCOMB_X39_Y22_N20 ; comb_ckt|Add0~8|combout                                          ;
+;   3.497  ;   1.987 ; RR ; IC   ; 1      ; LCCOMB_X50_Y19_N24 ; comb_ckt|vram_inst|Mux3~22|datab                                 ;
+;   3.899  ;   0.402 ; RR ; CELL ; 1      ; LCCOMB_X50_Y19_N24 ; comb_ckt|vram_inst|Mux3~22|combout                               ;
+;   4.893  ;   0.994 ; RR ; IC   ; 1      ; LCCOMB_X59_Y19_N24 ; comb_ckt|vram_inst|Mux3~23|datab                                 ;
+;   5.316  ;   0.423 ; RR ; CELL ; 1      ; LCCOMB_X59_Y19_N24 ; comb_ckt|vram_inst|Mux3~23|combout                               ;
+;   6.738  ;   1.422 ; RR ; IC   ; 1      ; LCCOMB_X58_Y28_N16 ; comb_ckt|vram_inst|Mux3~26|datad                                 ;
+;   6.904  ;   0.166 ; RR ; CELL ; 1      ; LCCOMB_X58_Y28_N16 ; comb_ckt|vram_inst|Mux3~26|combout                               ;
+;   7.108  ;   0.204 ; RR ; IC   ; 1      ; LCCOMB_X58_Y28_N26 ; comb_ckt|vram_inst|Mux3~29|datad                                 ;
+;   7.274  ;   0.166 ; RR ; CELL ; 1      ; LCCOMB_X58_Y28_N26 ; comb_ckt|vram_inst|Mux3~29|combout                               ;
+;   9.306  ;   2.032 ; RR ; IC   ; 1      ; LCCOMB_X46_Y20_N8  ; comb_ckt|vram_inst|Mux3~30|datab                                 ;
+;   9.729  ;   0.423 ; RR ; CELL ; 1      ; LCCOMB_X46_Y20_N8  ; comb_ckt|vram_inst|Mux3~30|combout                               ;
+;   10.695 ;   0.966 ; RR ; IC   ; 1      ; LCCOMB_X50_Y20_N0  ; comb_ckt|vram_inst|Mux3~41|datad                                 ;
+;   10.840 ;   0.145 ; RF ; CELL ; 1      ; LCCOMB_X50_Y20_N0  ; comb_ckt|vram_inst|Mux3~41|combout                               ;
+;   12.734 ;   1.894 ; FF ; IC   ; 1      ; LCCOMB_X43_Y26_N30 ; comb_ckt|vram_inst|Mux3~169|dataa                                ;
+;   13.139 ;   0.405 ; FF ; CELL ; 1      ; LCCOMB_X43_Y26_N30 ; comb_ckt|vram_inst|Mux3~169|combout                              ;
+;   13.139 ;   0.000 ; FF ; IC   ; 1      ; FF_X43_Y26_N31     ; comb_ckt|vram_inst|vga_char_out[4]|d                             ;
+;   13.233 ;   0.094 ; FF ; CELL ; 1      ; FF_X43_Y26_N31     ; comb_ckt_generator:comb_ckt|video_vram:vram_inst|vga_char_out[4] ;
++----------+---------+----+------+--------+--------------------+------------------------------------------------------------------+
+
+
+Path #16: Delay is 13.219
+===============================================================================
++------------------------------------------------------------------------------+
+; Path Summary                                                                 ;
++-----------+------------------------------------------------------------------+
+; Property  ; Value                                                            ;
++-----------+------------------------------------------------------------------+
+; From Node ; vga_controller:control|column[2]                                 ;
+; To Node   ; comb_ckt_generator:comb_ckt|video_vram:vram_inst|vga_char_out[4] ;
+; Delay     ; 13.219                                                           ;
++-----------+------------------------------------------------------------------+
+
++------------------------------------------------------------------------------------+
+; Statistics                                                                         ;
++------------------------+--------+-------+-------------+------------+-------+-------+
+; Property               ; Value  ; Count ; Total Delay ; % of Total ; Min   ; Max   ;
++------------------------+--------+-------+-------------+------------+-------+-------+
+; Data Delay             ; 13.219 ;       ;             ;            ;       ;       ;
+; Number of Logic Levels ;        ; 8     ;             ;            ;       ;       ;
+; Physical Delays        ;        ;       ;             ;            ;       ;       ;
+;  IC                    ;        ; 12    ; 9.690       ; 73         ; 0.000 ; 2.681 ;
+;  Cell                  ;        ; 13    ; 3.529       ; 27         ; 0.000 ; 0.477 ;
++------------------------+--------+-------+-------------+------------+-------+-------+
+Note: Negative delays are omitted from totals when calculating percentages
+
++---------------------------------------------------------------------------------------------------------------------------------+
+; Data Arrival Path                                                                                                               ;
++----------+---------+----+------+--------+--------------------+------------------------------------------------------------------+
+; Total    ; Incr    ; RF ; Type ; Fanout ; Location           ; Element                                                          ;
++----------+---------+----+------+--------+--------------------+------------------------------------------------------------------+
+; 13.219   ; 13.219  ;    ;      ;        ;                    ; data path                                                        ;
+;   0.000  ;   0.000 ;    ;      ; 1      ; FF_X39_Y22_N13     ; vga_controller:control|column[2]                                 ;
+;   0.000  ;   0.000 ; FF ; CELL ; 1      ; FF_X39_Y22_N13     ; control|column[2]|q                                              ;
+;   0.370  ;   0.370 ; FF ; IC   ; 2      ; LCCOMB_X39_Y22_N12 ; comb_ckt|Add0~0|dataa                                            ;
+;   0.847  ;   0.477 ; FF ; CELL ; 1      ; LCCOMB_X39_Y22_N12 ; comb_ckt|Add0~0|cout                                             ;
+;   0.847  ;   0.000 ; FF ; IC   ; 2      ; LCCOMB_X39_Y22_N14 ; comb_ckt|Add0~2|cin                                              ;
+;   0.906  ;   0.059 ; FR ; CELL ; 1      ; LCCOMB_X39_Y22_N14 ; comb_ckt|Add0~2|cout                                             ;
+;   0.906  ;   0.000 ; RR ; IC   ; 2      ; LCCOMB_X39_Y22_N16 ; comb_ckt|Add0~4|cin                                              ;
+;   0.965  ;   0.059 ; RF ; CELL ; 1      ; LCCOMB_X39_Y22_N16 ; comb_ckt|Add0~4|cout                                             ;
+;   0.965  ;   0.000 ; FF ; IC   ; 2      ; LCCOMB_X39_Y22_N18 ; comb_ckt|Add0~6|cin                                              ;
+;   1.438  ;   0.473 ; FR ; CELL ; 208    ; LCCOMB_X39_Y22_N18 ; comb_ckt|Add0~6|combout                                          ;
+;   4.119  ;   2.681 ; RR ; IC   ; 1      ; LCCOMB_X56_Y26_N8  ; comb_ckt|vram_inst|Mux3~24|datab                                 ;
+;   4.544  ;   0.425 ; RF ; CELL ; 1      ; LCCOMB_X56_Y26_N8  ; comb_ckt|vram_inst|Mux3~24|combout                               ;
+;   5.309  ;   0.765 ; FF ; IC   ; 1      ; LCCOMB_X57_Y24_N16 ; comb_ckt|vram_inst|Mux3~25|datab                                 ;
+;   5.713  ;   0.404 ; FF ; CELL ; 1      ; LCCOMB_X57_Y24_N16 ; comb_ckt|vram_inst|Mux3~25|combout                               ;
+;   6.461  ;   0.748 ; FF ; IC   ; 1      ; LCCOMB_X58_Y28_N16 ; comb_ckt|vram_inst|Mux3~26|datab                                 ;
+;   6.865  ;   0.404 ; FF ; CELL ; 1      ; LCCOMB_X58_Y28_N16 ; comb_ckt|vram_inst|Mux3~26|combout                               ;
+;   7.099  ;   0.234 ; FF ; IC   ; 1      ; LCCOMB_X58_Y28_N26 ; comb_ckt|vram_inst|Mux3~29|datad                                 ;
+;   7.260  ;   0.161 ; FR ; CELL ; 1      ; LCCOMB_X58_Y28_N26 ; comb_ckt|vram_inst|Mux3~29|combout                               ;
+;   9.292  ;   2.032 ; RR ; IC   ; 1      ; LCCOMB_X46_Y20_N8  ; comb_ckt|vram_inst|Mux3~30|datab                                 ;
+;   9.715  ;   0.423 ; RR ; CELL ; 1      ; LCCOMB_X46_Y20_N8  ; comb_ckt|vram_inst|Mux3~30|combout                               ;
+;   10.681 ;   0.966 ; RR ; IC   ; 1      ; LCCOMB_X50_Y20_N0  ; comb_ckt|vram_inst|Mux3~41|datad                                 ;
+;   10.826 ;   0.145 ; RF ; CELL ; 1      ; LCCOMB_X50_Y20_N0  ; comb_ckt|vram_inst|Mux3~41|combout                               ;
+;   12.720 ;   1.894 ; FF ; IC   ; 1      ; LCCOMB_X43_Y26_N30 ; comb_ckt|vram_inst|Mux3~169|dataa                                ;
+;   13.125 ;   0.405 ; FF ; CELL ; 1      ; LCCOMB_X43_Y26_N30 ; comb_ckt|vram_inst|Mux3~169|combout                              ;
+;   13.125 ;   0.000 ; FF ; IC   ; 1      ; FF_X43_Y26_N31     ; comb_ckt|vram_inst|vga_char_out[4]|d                             ;
+;   13.219 ;   0.094 ; FF ; CELL ; 1      ; FF_X43_Y26_N31     ; comb_ckt_generator:comb_ckt|video_vram:vram_inst|vga_char_out[4] ;
++----------+---------+----+------+--------+--------------------+------------------------------------------------------------------+
+
+
+Path #17: Delay is 13.186
+===============================================================================
++------------------------------------------------------------------------------+
+; Path Summary                                                                 ;
++-----------+------------------------------------------------------------------+
+; Property  ; Value                                                            ;
++-----------+------------------------------------------------------------------+
+; From Node ; vga_controller:control|column[2]                                 ;
+; To Node   ; comb_ckt_generator:comb_ckt|video_vram:vram_inst|vga_char_out[4] ;
+; Delay     ; 13.186                                                           ;
++-----------+------------------------------------------------------------------+
+
++------------------------------------------------------------------------------------+
+; Statistics                                                                         ;
++------------------------+--------+-------+-------------+------------+-------+-------+
+; Property               ; Value  ; Count ; Total Delay ; % of Total ; Min   ; Max   ;
++------------------------+--------+-------+-------------+------------+-------+-------+
+; Data Delay             ; 13.186 ;       ;             ;            ;       ;       ;
+; Number of Logic Levels ;        ; 7     ;             ;            ;       ;       ;
+; Physical Delays        ;        ;       ;             ;            ;       ;       ;
+;  IC                    ;        ; 12    ; 9.824       ; 75         ; 0.000 ; 3.580 ;
+;  Cell                  ;        ; 13    ; 3.362       ; 25         ; 0.000 ; 0.637 ;
++------------------------+--------+-------+-------------+------------+-------+-------+
+Note: Negative delays are omitted from totals when calculating percentages
+
++---------------------------------------------------------------------------------------------------------------------------------+
+; Data Arrival Path                                                                                                               ;
++----------+---------+----+------+--------+--------------------+------------------------------------------------------------------+
+; Total    ; Incr    ; RF ; Type ; Fanout ; Location           ; Element                                                          ;
++----------+---------+----+------+--------+--------------------+------------------------------------------------------------------+
+; 13.186   ; 13.186  ;    ;      ;        ;                    ; data path                                                        ;
+;   0.000  ;   0.000 ;    ;      ; 1      ; FF_X39_Y22_N13     ; vga_controller:control|column[2]                                 ;
+;   0.000  ;   0.000 ; FF ; CELL ; 1      ; FF_X39_Y22_N13     ; control|column[2]|q                                              ;
+;   0.370  ;   0.370 ; FF ; IC   ; 2      ; LCCOMB_X39_Y22_N12 ; comb_ckt|Add0~0|dataa                                            ;
+;   0.847  ;   0.477 ; FF ; CELL ; 1      ; LCCOMB_X39_Y22_N12 ; comb_ckt|Add0~0|cout                                             ;
+;   0.847  ;   0.000 ; FF ; IC   ; 2      ; LCCOMB_X39_Y22_N14 ; comb_ckt|Add0~2|cin                                              ;
+;   0.906  ;   0.059 ; FR ; CELL ; 1      ; LCCOMB_X39_Y22_N14 ; comb_ckt|Add0~2|cout                                             ;
+;   0.906  ;   0.000 ; RR ; IC   ; 2      ; LCCOMB_X39_Y22_N16 ; comb_ckt|Add0~4|cin                                              ;
+;   0.965  ;   0.059 ; RF ; CELL ; 1      ; LCCOMB_X39_Y22_N16 ; comb_ckt|Add0~4|cout                                             ;
+;   0.965  ;   0.000 ; FF ; IC   ; 2      ; LCCOMB_X39_Y22_N18 ; comb_ckt|Add0~6|cin                                              ;
+;   1.024  ;   0.059 ; FR ; CELL ; 1      ; LCCOMB_X39_Y22_N18 ; comb_ckt|Add0~6|cout                                             ;
+;   1.024  ;   0.000 ; RR ; IC   ; 2      ; LCCOMB_X39_Y22_N20 ; comb_ckt|Add0~8|cin                                              ;
+;   1.661  ;   0.637 ; RR ; CELL ; 209    ; LCCOMB_X39_Y22_N20 ; comb_ckt|Add0~8|combout                                          ;
+;   5.241  ;   3.580 ; RR ; IC   ; 1      ; LCCOMB_X57_Y24_N16 ; comb_ckt|vram_inst|Mux3~25|dataa                                 ;
+;   5.680  ;   0.439 ; RF ; CELL ; 1      ; LCCOMB_X57_Y24_N16 ; comb_ckt|vram_inst|Mux3~25|combout                               ;
+;   6.428  ;   0.748 ; FF ; IC   ; 1      ; LCCOMB_X58_Y28_N16 ; comb_ckt|vram_inst|Mux3~26|datab                                 ;
+;   6.832  ;   0.404 ; FF ; CELL ; 1      ; LCCOMB_X58_Y28_N16 ; comb_ckt|vram_inst|Mux3~26|combout                               ;
+;   7.066  ;   0.234 ; FF ; IC   ; 1      ; LCCOMB_X58_Y28_N26 ; comb_ckt|vram_inst|Mux3~29|datad                                 ;
+;   7.227  ;   0.161 ; FR ; CELL ; 1      ; LCCOMB_X58_Y28_N26 ; comb_ckt|vram_inst|Mux3~29|combout                               ;
+;   9.259  ;   2.032 ; RR ; IC   ; 1      ; LCCOMB_X46_Y20_N8  ; comb_ckt|vram_inst|Mux3~30|datab                                 ;
+;   9.682  ;   0.423 ; RR ; CELL ; 1      ; LCCOMB_X46_Y20_N8  ; comb_ckt|vram_inst|Mux3~30|combout                               ;
+;   10.648 ;   0.966 ; RR ; IC   ; 1      ; LCCOMB_X50_Y20_N0  ; comb_ckt|vram_inst|Mux3~41|datad                                 ;
+;   10.793 ;   0.145 ; RF ; CELL ; 1      ; LCCOMB_X50_Y20_N0  ; comb_ckt|vram_inst|Mux3~41|combout                               ;
+;   12.687 ;   1.894 ; FF ; IC   ; 1      ; LCCOMB_X43_Y26_N30 ; comb_ckt|vram_inst|Mux3~169|dataa                                ;
+;   13.092 ;   0.405 ; FF ; CELL ; 1      ; LCCOMB_X43_Y26_N30 ; comb_ckt|vram_inst|Mux3~169|combout                              ;
+;   13.092 ;   0.000 ; FF ; IC   ; 1      ; FF_X43_Y26_N31     ; comb_ckt|vram_inst|vga_char_out[4]|d                             ;
+;   13.186 ;   0.094 ; FF ; CELL ; 1      ; FF_X43_Y26_N31     ; comb_ckt_generator:comb_ckt|video_vram:vram_inst|vga_char_out[4] ;
++----------+---------+----+------+--------+--------------------+------------------------------------------------------------------+
+
+
+Path #18: Delay is 13.135
+===============================================================================
++------------------------------------------------------------------------------+
+; Path Summary                                                                 ;
++-----------+------------------------------------------------------------------+
+; Property  ; Value                                                            ;
++-----------+------------------------------------------------------------------+
+; From Node ; vga_controller:control|column[3]                                 ;
+; To Node   ; comb_ckt_generator:comb_ckt|video_vram:vram_inst|vga_char_out[0] ;
+; Delay     ; 13.135                                                           ;
++-----------+------------------------------------------------------------------+
+
++------------------------------------------------------------------------------------+
+; Statistics                                                                         ;
++------------------------+--------+-------+-------------+------------+-------+-------+
+; Property               ; Value  ; Count ; Total Delay ; % of Total ; Min   ; Max   ;
++------------------------+--------+-------+-------------+------------+-------+-------+
+; Data Delay             ; 13.135 ;       ;             ;            ;       ;       ;
+; Number of Logic Levels ;        ; 8     ;             ;            ;       ;       ;
+; Physical Delays        ;        ;       ;             ;            ;       ;       ;
+;  IC                    ;        ; 10    ; 9.086       ; 69         ; 0.000 ; 2.301 ;
+;  Cell                  ;        ; 11    ; 4.049       ; 31         ; 0.000 ; 0.637 ;
++------------------------+--------+-------+-------------+------------+-------+-------+
+Note: Negative delays are omitted from totals when calculating percentages
+
++---------------------------------------------------------------------------------------------------------------------------------+
+; Data Arrival Path                                                                                                               ;
++----------+---------+----+------+--------+--------------------+------------------------------------------------------------------+
+; Total    ; Incr    ; RF ; Type ; Fanout ; Location           ; Element                                                          ;
++----------+---------+----+------+--------+--------------------+------------------------------------------------------------------+
+; 13.135   ; 13.135  ;    ;      ;        ;                    ; data path                                                        ;
+;   0.000  ;   0.000 ;    ;      ; 1      ; FF_X39_Y22_N15     ; vga_controller:control|column[3]                                 ;
+;   0.000  ;   0.000 ; FF ; CELL ; 1      ; FF_X39_Y22_N15     ; control|column[3]|q                                              ;
+;   0.362  ;   0.362 ; FF ; IC   ; 2      ; LCCOMB_X39_Y22_N14 ; comb_ckt|Add0~2|datab                                            ;
+;   0.755  ;   0.393 ; FR ; CELL ; 1      ; LCCOMB_X39_Y22_N14 ; comb_ckt|Add0~2|cout                                             ;
+;   0.755  ;   0.000 ; RR ; IC   ; 2      ; LCCOMB_X39_Y22_N16 ; comb_ckt|Add0~4|cin                                              ;
+;   1.392  ;   0.637 ; RR ; CELL ; 227    ; LCCOMB_X39_Y22_N16 ; comb_ckt|Add0~4|combout                                          ;
+;   3.693  ;   2.301 ; RR ; IC   ; 1      ; LCCOMB_X54_Y18_N4  ; comb_ckt|vram_inst|Mux7~59|datab                                 ;
+;   4.095  ;   0.402 ; RR ; CELL ; 1      ; LCCOMB_X54_Y18_N4  ; comb_ckt|vram_inst|Mux7~59|combout                               ;
+;   5.250  ;   1.155 ; RR ; IC   ; 1      ; LCCOMB_X51_Y15_N30 ; comb_ckt|vram_inst|Mux7~60|dataa                                 ;
+;   5.672  ;   0.422 ; RR ; CELL ; 1      ; LCCOMB_X51_Y15_N30 ; comb_ckt|vram_inst|Mux7~60|combout                               ;
+;   7.414  ;   1.742 ; RR ; IC   ; 1      ; LCCOMB_X57_Y21_N30 ; comb_ckt|vram_inst|Mux7~61|datab                                 ;
+;   7.785  ;   0.371 ; RR ; CELL ; 1      ; LCCOMB_X57_Y21_N30 ; comb_ckt|vram_inst|Mux7~61|combout                               ;
+;   9.228  ;   1.443 ; RR ; IC   ; 1      ; LCCOMB_X47_Y25_N20 ; comb_ckt|vram_inst|Mux7~72|datab                                 ;
+;   9.630  ;   0.402 ; RR ; CELL ; 1      ; LCCOMB_X47_Y25_N20 ; comb_ckt|vram_inst|Mux7~72|combout                               ;
+;   9.834  ;   0.204 ; RR ; IC   ; 1      ; LCCOMB_X47_Y25_N10 ; comb_ckt|vram_inst|Mux7~83|datad                                 ;
+;   10.000 ;   0.166 ; RR ; CELL ; 1      ; LCCOMB_X47_Y25_N10 ; comb_ckt|vram_inst|Mux7~83|combout                               ;
+;   11.010 ;   1.010 ; RR ; IC   ; 1      ; LCCOMB_X41_Y25_N18 ; comb_ckt|vram_inst|Mux7~126|dataa                                ;
+;   11.419 ;   0.409 ; RR ; CELL ; 1      ; LCCOMB_X41_Y25_N18 ; comb_ckt|vram_inst|Mux7~126|combout                              ;
+;   11.658 ;   0.239 ; RR ; IC   ; 1      ; LCCOMB_X41_Y25_N6  ; comb_ckt|vram_inst|Mux7~169|datab                                ;
+;   12.081 ;   0.423 ; RR ; CELL ; 1      ; LCCOMB_X41_Y25_N6  ; comb_ckt|vram_inst|Mux7~169|combout                              ;
+;   12.711 ;   0.630 ; RR ; IC   ; 1      ; FF_X42_Y25_N15     ; comb_ckt|vram_inst|vga_char_out[0]|asdata                        ;
+;   13.135 ;   0.424 ; RR ; CELL ; 1      ; FF_X42_Y25_N15     ; comb_ckt_generator:comb_ckt|video_vram:vram_inst|vga_char_out[0] ;
++----------+---------+----+------+--------+--------------------+------------------------------------------------------------------+
+
+
+Path #19: Delay is 13.134
+===============================================================================
++------------------------------------------------------------------------------+
+; Path Summary                                                                 ;
++-----------+------------------------------------------------------------------+
+; Property  ; Value                                                            ;
++-----------+------------------------------------------------------------------+
+; From Node ; vga_controller:control|column[3]                                 ;
+; To Node   ; comb_ckt_generator:comb_ckt|video_vram:vram_inst|vga_char_out[1] ;
+; Delay     ; 13.134                                                           ;
++-----------+------------------------------------------------------------------+
+
++------------------------------------------------------------------------------------+
+; Statistics                                                                         ;
++------------------------+--------+-------+-------------+------------+-------+-------+
+; Property               ; Value  ; Count ; Total Delay ; % of Total ; Min   ; Max   ;
++------------------------+--------+-------+-------------+------------+-------+-------+
+; Data Delay             ; 13.134 ;       ;             ;            ;       ;       ;
+; Number of Logic Levels ;        ; 8     ;             ;            ;       ;       ;
+; Physical Delays        ;        ;       ;             ;            ;       ;       ;
+;  IC                    ;        ; 13    ; 9.202       ; 70         ; 0.000 ; 2.643 ;
+;  Cell                  ;        ; 14    ; 3.932       ; 30         ; 0.000 ; 0.637 ;
++------------------------+--------+-------+-------------+------------+-------+-------+
+Note: Negative delays are omitted from totals when calculating percentages
+
++---------------------------------------------------------------------------------------------------------------------------------+
+; Data Arrival Path                                                                                                               ;
++----------+---------+----+------+--------+--------------------+------------------------------------------------------------------+
+; Total    ; Incr    ; RF ; Type ; Fanout ; Location           ; Element                                                          ;
++----------+---------+----+------+--------+--------------------+------------------------------------------------------------------+
+; 13.134   ; 13.134  ;    ;      ;        ;                    ; data path                                                        ;
+;   0.000  ;   0.000 ;    ;      ; 1      ; FF_X39_Y22_N15     ; vga_controller:control|column[3]                                 ;
+;   0.000  ;   0.000 ; RR ; CELL ; 1      ; FF_X39_Y22_N15     ; control|column[3]|q                                              ;
+;   0.278  ;   0.278 ; RR ; IC   ; 2      ; LCCOMB_X39_Y22_N14 ; comb_ckt|Add0~2|datab                                            ;
+;   0.802  ;   0.524 ; RF ; CELL ; 1      ; LCCOMB_X39_Y22_N14 ; comb_ckt|Add0~2|cout                                             ;
+;   0.802  ;   0.000 ; FF ; IC   ; 2      ; LCCOMB_X39_Y22_N16 ; comb_ckt|Add0~4|cin                                              ;
+;   0.861  ;   0.059 ; FR ; CELL ; 1      ; LCCOMB_X39_Y22_N16 ; comb_ckt|Add0~4|cout                                             ;
+;   0.861  ;   0.000 ; RR ; IC   ; 2      ; LCCOMB_X39_Y22_N18 ; comb_ckt|Add0~6|cin                                              ;
+;   0.920  ;   0.059 ; RF ; CELL ; 1      ; LCCOMB_X39_Y22_N18 ; comb_ckt|Add0~6|cout                                             ;
+;   0.920  ;   0.000 ; FF ; IC   ; 2      ; LCCOMB_X39_Y22_N20 ; comb_ckt|Add0~8|cin                                              ;
+;   0.979  ;   0.059 ; FR ; CELL ; 1      ; LCCOMB_X39_Y22_N20 ; comb_ckt|Add0~8|cout                                             ;
+;   0.979  ;   0.000 ; RR ; IC   ; 2      ; LCCOMB_X39_Y22_N22 ; comb_ckt|Add0~10|cin                                             ;
+;   1.616  ;   0.637 ; RR ; CELL ; 239    ; LCCOMB_X39_Y22_N22 ; comb_ckt|Add0~10|combout                                         ;
+;   4.259  ;   2.643 ; RR ; IC   ; 1      ; LCCOMB_X51_Y18_N4  ; comb_ckt|vram_inst|Mux6~104|datab                                ;
+;   4.661  ;   0.402 ; RR ; CELL ; 1      ; LCCOMB_X51_Y18_N4  ; comb_ckt|vram_inst|Mux6~104|combout                              ;
+;   6.253  ;   1.592 ; RR ; IC   ; 1      ; LCCOMB_X45_Y23_N20 ; comb_ckt|vram_inst|Mux6~105|datab                                ;
+;   6.676  ;   0.423 ; RR ; CELL ; 1      ; LCCOMB_X45_Y23_N20 ; comb_ckt|vram_inst|Mux6~105|combout                              ;
+;   7.921  ;   1.245 ; RR ; IC   ; 1      ; LCCOMB_X39_Y22_N10 ; comb_ckt|vram_inst|Mux6~113|dataa                                ;
+;   8.286  ;   0.365 ; RR ; CELL ; 1      ; LCCOMB_X39_Y22_N10 ; comb_ckt|vram_inst|Mux6~113|combout                              ;
+;   8.525  ;   0.239 ; RR ; IC   ; 1      ; LCCOMB_X39_Y22_N4  ; comb_ckt|vram_inst|Mux6~114|dataa                                ;
+;   8.947  ;   0.422 ; RR ; CELL ; 1      ; LCCOMB_X39_Y22_N4  ; comb_ckt|vram_inst|Mux6~114|combout                              ;
+;   10.474 ;   1.527 ; RR ; IC   ; 1      ; LCCOMB_X51_Y24_N30 ; comb_ckt|vram_inst|Mux6~125|datac                                ;
+;   10.779 ;   0.305 ; RR ; CELL ; 1      ; LCCOMB_X51_Y24_N30 ; comb_ckt|vram_inst|Mux6~125|combout                              ;
+;   11.510 ;   0.731 ; RR ; IC   ; 1      ; LCCOMB_X51_Y25_N8  ; comb_ckt|vram_inst|Mux6~126|datad                                ;
+;   11.676 ;   0.166 ; RR ; CELL ; 1      ; LCCOMB_X51_Y25_N8  ; comb_ckt|vram_inst|Mux6~126|combout                              ;
+;   12.623 ;   0.947 ; RR ; IC   ; 1      ; LCCOMB_X43_Y25_N6  ; comb_ckt|vram_inst|Mux6~169|dataa                                ;
+;   13.045 ;   0.422 ; RR ; CELL ; 1      ; LCCOMB_X43_Y25_N6  ; comb_ckt|vram_inst|Mux6~169|combout                              ;
+;   13.045 ;   0.000 ; RR ; IC   ; 1      ; FF_X43_Y25_N7      ; comb_ckt|vram_inst|vga_char_out[1]|d                             ;
+;   13.134 ;   0.089 ; RR ; CELL ; 1      ; FF_X43_Y25_N7      ; comb_ckt_generator:comb_ckt|video_vram:vram_inst|vga_char_out[1] ;
++----------+---------+----+------+--------+--------------------+------------------------------------------------------------------+
+
+
+Path #20: Delay is 13.122
+===============================================================================
++------------------------------------------------------------------------------+
+; Path Summary                                                                 ;
++-----------+------------------------------------------------------------------+
+; Property  ; Value                                                            ;
++-----------+------------------------------------------------------------------+
+; From Node ; vga_controller:control|column[2]                                 ;
+; To Node   ; comb_ckt_generator:comb_ckt|video_vram:vram_inst|vga_char_out[4] ;
+; Delay     ; 13.122                                                           ;
++-----------+------------------------------------------------------------------+
+
++------------------------------------------------------------------------------------+
+; Statistics                                                                         ;
++------------------------+--------+-------+-------------+------------+-------+-------+
+; Property               ; Value  ; Count ; Total Delay ; % of Total ; Min   ; Max   ;
++------------------------+--------+-------+-------------+------------+-------+-------+
+; Data Delay             ; 13.122 ;       ;             ;            ;       ;       ;
+; Number of Logic Levels ;        ; 8     ;             ;            ;       ;       ;
+; Physical Delays        ;        ;       ;             ;            ;       ;       ;
+;  IC                    ;        ; 13    ; 9.355       ; 71         ; 0.000 ; 2.387 ;
+;  Cell                  ;        ; 14    ; 3.767       ; 29         ; 0.000 ; 0.637 ;
++------------------------+--------+-------+-------------+------------+-------+-------+
+Note: Negative delays are omitted from totals when calculating percentages
+
++---------------------------------------------------------------------------------------------------------------------------------+
+; Data Arrival Path                                                                                                               ;
++----------+---------+----+------+--------+--------------------+------------------------------------------------------------------+
+; Total    ; Incr    ; RF ; Type ; Fanout ; Location           ; Element                                                          ;
++----------+---------+----+------+--------+--------------------+------------------------------------------------------------------+
+; 13.122   ; 13.122  ;    ;      ;        ;                    ; data path                                                        ;
+;   0.000  ;   0.000 ;    ;      ; 1      ; FF_X39_Y22_N13     ; vga_controller:control|column[2]                                 ;
+;   0.000  ;   0.000 ; FF ; CELL ; 1      ; FF_X39_Y22_N13     ; control|column[2]|q                                              ;
+;   0.370  ;   0.370 ; FF ; IC   ; 2      ; LCCOMB_X39_Y22_N12 ; comb_ckt|Add0~0|dataa                                            ;
+;   0.847  ;   0.477 ; FF ; CELL ; 1      ; LCCOMB_X39_Y22_N12 ; comb_ckt|Add0~0|cout                                             ;
+;   0.847  ;   0.000 ; FF ; IC   ; 2      ; LCCOMB_X39_Y22_N14 ; comb_ckt|Add0~2|cin                                              ;
+;   0.906  ;   0.059 ; FR ; CELL ; 1      ; LCCOMB_X39_Y22_N14 ; comb_ckt|Add0~2|cout                                             ;
+;   0.906  ;   0.000 ; RR ; IC   ; 2      ; LCCOMB_X39_Y22_N16 ; comb_ckt|Add0~4|cin                                              ;
+;   0.965  ;   0.059 ; RF ; CELL ; 1      ; LCCOMB_X39_Y22_N16 ; comb_ckt|Add0~4|cout                                             ;
+;   0.965  ;   0.000 ; FF ; IC   ; 2      ; LCCOMB_X39_Y22_N18 ; comb_ckt|Add0~6|cin                                              ;
+;   1.024  ;   0.059 ; FR ; CELL ; 1      ; LCCOMB_X39_Y22_N18 ; comb_ckt|Add0~6|cout                                             ;
+;   1.024  ;   0.000 ; RR ; IC   ; 2      ; LCCOMB_X39_Y22_N20 ; comb_ckt|Add0~8|cin                                              ;
+;   1.661  ;   0.637 ; RR ; CELL ; 209    ; LCCOMB_X39_Y22_N20 ; comb_ckt|Add0~8|combout                                          ;
+;   4.048  ;   2.387 ; RR ; IC   ; 1      ; LCCOMB_X56_Y26_N8  ; comb_ckt|vram_inst|Mux3~24|dataa                                 ;
+;   4.445  ;   0.397 ; RR ; CELL ; 1      ; LCCOMB_X56_Y26_N8  ; comb_ckt|vram_inst|Mux3~24|combout                               ;
+;   5.214  ;   0.769 ; RR ; IC   ; 1      ; LCCOMB_X57_Y24_N16 ; comb_ckt|vram_inst|Mux3~25|datab                                 ;
+;   5.637  ;   0.423 ; RR ; CELL ; 1      ; LCCOMB_X57_Y24_N16 ; comb_ckt|vram_inst|Mux3~25|combout                               ;
+;   6.370  ;   0.733 ; RR ; IC   ; 1      ; LCCOMB_X58_Y28_N16 ; comb_ckt|vram_inst|Mux3~26|datab                                 ;
+;   6.793  ;   0.423 ; RR ; CELL ; 1      ; LCCOMB_X58_Y28_N16 ; comb_ckt|vram_inst|Mux3~26|combout                               ;
+;   6.997  ;   0.204 ; RR ; IC   ; 1      ; LCCOMB_X58_Y28_N26 ; comb_ckt|vram_inst|Mux3~29|datad                                 ;
+;   7.163  ;   0.166 ; RR ; CELL ; 1      ; LCCOMB_X58_Y28_N26 ; comb_ckt|vram_inst|Mux3~29|combout                               ;
+;   9.195  ;   2.032 ; RR ; IC   ; 1      ; LCCOMB_X46_Y20_N8  ; comb_ckt|vram_inst|Mux3~30|datab                                 ;
+;   9.618  ;   0.423 ; RR ; CELL ; 1      ; LCCOMB_X46_Y20_N8  ; comb_ckt|vram_inst|Mux3~30|combout                               ;
+;   10.584 ;   0.966 ; RR ; IC   ; 1      ; LCCOMB_X50_Y20_N0  ; comb_ckt|vram_inst|Mux3~41|datad                                 ;
+;   10.729 ;   0.145 ; RF ; CELL ; 1      ; LCCOMB_X50_Y20_N0  ; comb_ckt|vram_inst|Mux3~41|combout                               ;
+;   12.623 ;   1.894 ; FF ; IC   ; 1      ; LCCOMB_X43_Y26_N30 ; comb_ckt|vram_inst|Mux3~169|dataa                                ;
+;   13.028 ;   0.405 ; FF ; CELL ; 1      ; LCCOMB_X43_Y26_N30 ; comb_ckt|vram_inst|Mux3~169|combout                              ;
+;   13.028 ;   0.000 ; FF ; IC   ; 1      ; FF_X43_Y26_N31     ; comb_ckt|vram_inst|vga_char_out[4]|d                             ;
+;   13.122 ;   0.094 ; FF ; CELL ; 1      ; FF_X43_Y26_N31     ; comb_ckt_generator:comb_ckt|video_vram:vram_inst|vga_char_out[4] ;
++----------+---------+----+------+--------+--------------------+------------------------------------------------------------------+
+
+
