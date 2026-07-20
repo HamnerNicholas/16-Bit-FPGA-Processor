@@ -1,0 +1,75 @@
+; ============================================================
+; Case 1: positive < positive, branch taken
+; 3 < 5 is true
+; ============================================================
+
+addi r0 3
+copy r1
+
+addi r0 5
+blt r1 positive_taken
+
+; Must be skipped
+addi r0 0xEE
+copy r4
+
+: positive_taken
+
+addi r0 0x11
+copy r2
+
+
+; ============================================================
+; Case 2: positive < positive, branch not taken
+; 3 < 2 is false
+; ============================================================
+
+addi r0 2
+blt r1 positive_not_taken
+
+; Must execute
+addi r0 0x22
+copy r3
+
+: positive_not_taken
+
+
+; ============================================================
+; Case 3: negative < positive, branch taken
+; 0xFE = -2 signed, and -2 < 1 is true
+; ============================================================
+
+addi r0 0xFE
+copy r5
+
+addi r0 1
+blt r5 negative_taken
+
+; Must be skipped
+addi r0 0xEE
+copy r6
+
+: negative_taken
+
+addi r0 0x33
+copy r6
+
+
+; ============================================================
+; Case 4: positive < negative, branch not taken
+; 1 < -2 is false
+; ============================================================
+
+addi r0 1
+copy r7
+
+addi r0 0xFE
+blt r7 positive_vs_negative
+
+; Must execute
+addi r0 0x44
+copy r4
+
+: positive_vs_negative
+
+halt
