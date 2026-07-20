@@ -1,0 +1,52 @@
+.ivt INT1 int1_handler
+.ivt INT5 int5_handler
+
+; ------------------------------------------------------------
+; Main program
+; ------------------------------------------------------------
+
+addi r0 1
+copy r1
+
+; Testbench pulses INT1 and INT5 while PC is here.
+addi r1 1
+
+; Interrupted instruction. ACC must be preserved by the ISR.
+copy r1
+
+addi r0 0x55
+copy r2
+
+halt
+
+
+; ------------------------------------------------------------
+; INT1 handler -- expected winner
+; Address 0x0007
+; ------------------------------------------------------------
+
+: int1_handler
+
+ssrf r6
+
+addi r0 0xA1
+copy r3
+
+rsrf r6
+rint
+
+
+; ------------------------------------------------------------
+; INT5 handler -- should not execute
+; Address 0x000C
+; ------------------------------------------------------------
+
+: int5_handler
+
+ssrf r7
+
+addi r0 0xA5
+copy r4
+
+rsrf r7
+rint
