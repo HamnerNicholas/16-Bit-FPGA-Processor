@@ -1,0 +1,33 @@
+; ------------------------------------------------------------
+; Taken equality branch
+; ------------------------------------------------------------
+
+addi r0 5
+copy r1
+
+addi r0 5
+beq r1 equal_taken
+
+; These instructions must be skipped.
+addi r0 0xEE
+copy r4
+
+: equal_taken
+
+addi r0 0x11
+copy r2
+
+; ------------------------------------------------------------
+; Not-taken equality branch
+; ------------------------------------------------------------
+
+addi r0 7
+beq r1 equal_not_taken
+
+; These instructions must execute because R1 = 5 and ACC = 7.
+addi r0 0x22
+copy r3
+
+: equal_not_taken
+
+halt
