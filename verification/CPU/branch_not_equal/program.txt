@@ -1,0 +1,33 @@
+; ------------------------------------------------------------
+; Taken not-equal branch
+; ------------------------------------------------------------
+
+addi r0 5
+copy r1
+
+addi r0 7
+bne r1 not_equal_taken
+
+; These must be skipped.
+addi r0 0xEE
+copy r4
+
+: not_equal_taken
+
+addi r0 0x11
+copy r2
+
+; ------------------------------------------------------------
+; Not-taken not-equal branch
+; ------------------------------------------------------------
+
+addi r0 5
+bne r1 not_equal_not_taken
+
+; These must execute because R1 = 5 and ACC = 5.
+addi r0 0x22
+copy r3
+
+: not_equal_not_taken
+
+halt
