@@ -1,0 +1,32 @@
+; Set loop limit to 3
+addi r0 3
+copy r1
+
+; Initialize loop counter to 0
+addi r0 0
+copy r2
+
+; Forward jump over instructions that must not execute
+jump loop_start
+
+addi r0 0xEE
+copy r4
+
+: loop_start
+
+; Increment counter
+addi r2 1
+copy r2
+
+; Exit once counter reaches 3
+beq r1 loop_done
+
+; Negative relative offset back to loop_start
+jump loop_start
+
+: loop_done
+
+addi r0 0x55
+copy r3
+
+halt
