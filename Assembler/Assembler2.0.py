@@ -76,10 +76,10 @@ branch_subops = {
     "jump": (0b11, 2, OP_IMM_STYLE, 0b101),
 }
 load_subops = {
-    "load": (0b00, 3, OP_REG_IMM_STYLE, 0b110),
+    "load": (0b00, 2, OP_IMM_STYLE, 0b110),
 }
 store_subops = {
-    "store": (0b00, 3, OP_REG_IMM_STYLE, 0b111),
+    "store": (0b00, 2, OP_IMM_STYLE, 0b111),
 }
 
 directive_ops = {
