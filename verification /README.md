@@ -4,8 +4,6 @@ This directory contains the directed verification environment for the 16-Bit FPG
 
 The goal of this verification suite is to validate the functionality of each hardware module independently before performing full processor integration testing. Each module is verified using a self-checking Verilog testbench that exercises both normal operation and edge-case behavior.
 
-Module-level verification follows a bottom-up methodology:
-
 ---
 
 # Verification Strategy
