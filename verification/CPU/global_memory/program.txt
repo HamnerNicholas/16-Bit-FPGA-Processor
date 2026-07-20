@@ -1,0 +1,13 @@
+addi r0 42
+store 16
+
+addi r0 0
+load 16
+copy r1
+
+addi r0 99
+store 16
+load 16
+copy r2
+
+halt
