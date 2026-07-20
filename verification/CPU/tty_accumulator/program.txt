@@ -1,0 +1,11 @@
+; ========================================
+; Accumulator TTY Output Test
+; ========================================
+
+addi r0 0x55
+ttya
+
+addi r0 0xAA
+ttya
+
+halt
