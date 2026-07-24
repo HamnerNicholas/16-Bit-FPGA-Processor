@@ -24,6 +24,85 @@ function_has_return = False
 function_params = {}
 current_function_params = {}
 
+GFX_X_PORT = 16
+GFX_Y_PORT = 17
+GFX_COLOR_PORT = 18
+GFX_DRAW_PORT = 19
+
+TEXT_LINE_WIDTH = 32
+
+# helpers for data translation
+def parse_integer_literal(token):
+    try:
+        return int(token, 0)
+    except ValueError:
+        return None
+
+def is_integer_literal(token):
+    return parse_integer_literal(token) is not None
+
+# helper to emit the rest of a string when using the newline char "\n"
+def emit_tty_text(text, out_file, current_column):
+    parts = text.split("\\n")
+
+    for index, part in enumerate(parts):
+        if part:
+            out_file.write(f'tty "{part}"\n')
+            current_column = (
+                current_column + len(part)
+            ) % TEXT_LINE_WIDTH
+
+        # Every separator between split sections represents one newline.
+        if index < len(parts) - 1:
+            if current_column == 0:
+                spaces_remaining = TEXT_LINE_WIDTH
+            else:
+                spaces_remaining = TEXT_LINE_WIDTH - current_column
+
+            out_file.write(
+                f'tty "{" " * spaces_remaining}"\n'
+            )
+
+            current_column = 0
+
+    return current_column
+
+# helper to load the acc with a value specified by an instruction
+def emit_operand_to_acc(
+    operand,
+    variables,
+    out_file,
+    line_num
+):
+    literal_value = parse_integer_literal(operand)
+
+    if literal_value is not None:
+        if literal_value < -128 or literal_value > 255:
+            raise Exception(
+                f"Immediate value '{operand}' out of range "
+                f"on line {line_num}"
+            )
+
+        out_file.write(f"addi r0 {operand}\n")
+        return
+
+    if operand == "RETVAL":
+        out_file.write("rsrf r0\n")
+        return
+
+    if operand in current_function_params:
+        srf_num = current_function_params[operand]
+        out_file.write(f"rsrf r{srf_num}\n")
+        return
+
+    if operand in variables:
+        out_file.write(f"load {variables[operand]}\n")
+        return
+
+    raise Exception(
+        f"Invalid pixel operand '{operand}' on line {line_num}"
+    )
+
 # Math expression conversion
 def parse_to_postfix(fields_slice, variables):
     precedence = {
@@ -76,25 +155,25 @@ def load_operand_to_reg(operand, reg, variables, out_file):
     if operand == "RETVAL":
         out_file.write("rsrf r0\n")
         out_file.write(f"copy {reg}\n")
+
     elif operand in current_function_params:
         srf_num = current_function_params[operand]
-
         out_file.write(f"rsrf r{srf_num}\n")
         out_file.write(f"copy {reg}\n")
-    elif operand in current_function_params:
-        srf_reg = current_function_params[operand]
-        out_file.write(f"rsrf r{srf_reg}\n")
-        out_file.write(f"copy {reg}\n")
+
     elif operand in variables:
-        out_file.write(f"load {reg} {variables[operand]}\n")
+        out_file.write(f"load {variables[operand]}\n")
         out_file.write(f"copy {reg}\n")
-    elif operand.isdigit():
+
+    elif is_integer_literal(operand):
         out_file.write(f"addi r0 {operand}\n")
         out_file.write(f"copy {reg}\n")
+
     elif operand.startswith("r"):
         if operand != reg:
             out_file.write(f"addi {operand} 0\n")
             out_file.write(f"copy {reg}\n")
+
     else:
         raise Exception(f"Invalid operand '{operand}'")
 
@@ -220,11 +299,11 @@ def emit_increment(update_tokens, variables, out_file, line_num):
     if var not in variables:
         raise Exception(f"Variable '{var}' not declared on line {line_num}")
 
-    out_file.write(f"load r1 {variables[var]}\n")
+    out_file.write(f"load {variables[var]}\n")
     out_file.write("copy r1\n")
     out_file.write(f"{op} r1 1\n")
     out_file.write("copy r1\n")
-    out_file.write(f"store r1 {variables[var]}\n")
+    out_file.write(f"store {variables[var]}\n")
 
 def parse_func_header(name_token):
     # name_token example: add(a,b)
@@ -242,7 +321,7 @@ def parse_func_header(name_token):
 
 # Compiler Code
 try:
-    with open(filename, "r") as file, open("assembly.txt", "w") as out_file, open("ivt.txt", "w") as ivt_file:
+    with open(filename, "r") as file, open("assembly.txt", "w") as out_file:
         lines = file.readlines()
 
         # FIRST PASS: Variable Allocations
@@ -307,7 +386,8 @@ try:
         for_stack = []
 
         uses_print_num = False
-        
+
+        tty_column = 0
 
         for line_num, line in enumerate(lines, start=1):
             line = line.replace(",", " , ")
@@ -323,6 +403,88 @@ try:
 
             # Skip declarations during code generation
             if fields[0] == "let":
+                continue
+
+            # PIXEL DRAWING
+            if fields[0] == "pixel":
+                # Allows either:
+                # pixel 10 20 224
+                # pixel 10, 20, 224
+                pixel_args = [
+                    field
+                    for field in fields[1:]
+                    if field != ","
+                ]
+
+                if len(pixel_args) != 3:
+                    raise Exception(
+                        f"Invalid pixel statement on line {line_num}. "
+                        "Expected: pixel x, y, color"
+                    )
+
+                x_operand = pixel_args[0]
+                y_operand = pixel_args[1]
+                color_operand = pixel_args[2]
+
+                # Compile-time bounds checking when values are constants.
+                x_value = parse_integer_literal(x_operand)
+                y_value = parse_integer_literal(y_operand)
+                color_value = parse_integer_literal(color_operand)
+
+                if x_value is not None and not (0 <= x_value < 80):
+                    raise Exception(
+                        f"Pixel X coordinate {x_value} out of range "
+                        f"on line {line_num}; expected 0-79"
+                    )
+
+                if y_value is not None and not (0 <= y_value < 60):
+                    raise Exception(
+                        f"Pixel Y coordinate {y_value} out of range "
+                        f"on line {line_num}; expected 0-59"
+                    )
+
+                if color_value is not None and not (0 <= color_value <= 255):
+                    raise Exception(
+                        f"Pixel color {color_value} out of range "
+                        f"on line {line_num}; expected 0-255"
+                    )
+
+                out_file.write(
+                    f"\n; Draw pixel ({x_operand}, {y_operand}) "
+                    f"with color {color_operand}\n"
+                )
+
+                # Set X.
+                emit_operand_to_acc(
+                    x_operand,
+                    variables,
+                    out_file,
+                    line_num
+                )
+                out_file.write(f"storeio {GFX_X_PORT}\n")
+
+                # Set Y.
+                emit_operand_to_acc(
+                    y_operand,
+                    variables,
+                    out_file,
+                    line_num
+                )
+                out_file.write(f"storeio {GFX_Y_PORT}\n")
+
+                # Set color.
+                emit_operand_to_acc(
+                    color_operand,
+                    variables,
+                    out_file,
+                    line_num
+                )
+                out_file.write(f"storeio {GFX_COLOR_PORT}\n")
+
+                # Trigger the draw command.
+                out_file.write("addi r0 1\n")
+                out_file.write(f"storeio {GFX_DRAW_PORT}\n")
+
                 continue
             
             # FUNCTION CREATION
@@ -411,7 +573,7 @@ try:
                     srf_num = index + 1
 
                     if arg in variables:
-                        out_file.write(f"load r1 {variables[arg]}\n")
+                        out_file.write(f"load {variables[arg]}\n")
                         out_file.write("copy r1\n")
                         out_file.write(f"ssrf r{srf_num}\n")
 
@@ -536,7 +698,7 @@ try:
                         if array_index < 0 or array_index >= length:
                             raise Exception(f"Array out of bounds at line {line_num}")
 
-                        out_file.write(f"load r1 {final_address}\n")
+                        out_file.write(f"load {final_address}\n")
                         out_file.write("copy r1\n")
                         out_file.write(f"addi r1 0\n")
                         out_file.write(f"copy {target_reg}\n")
@@ -581,13 +743,13 @@ try:
                     raise Exception(f"Variable '{init_var}' not declared on line {line_num}")
 
                 if init_value in variables:
-                    out_file.write(f"load r1 {variables[init_value]}\n")
+                    out_file.write(f"load {variables[init_value]}\n")
                     out_file.write("copy r1\n")
-                    out_file.write(f"store r1 {variables[init_var]}\n")
+                    out_file.write(f"store {variables[init_var]}\n")
                 elif init_value.isdigit():
                     out_file.write(f"addi r0 {init_value}\n")
                     out_file.write("copy r1\n")
-                    out_file.write(f"store r1 {variables[init_var]}\n")
+                    out_file.write(f"store {variables[init_var]}\n")
                 else:
                     raise Exception(f"Invalid for-loop init value '{init_value}' on line {line_num}")
 
@@ -606,7 +768,7 @@ try:
 
                 # r2 = left side
                 if left_comp in variables:
-                    out_file.write(f"load r1 {variables[left_comp]}\n")
+                    out_file.write(f"load {variables[left_comp]}\n")
                     out_file.write("copy r5\n")
                 elif left_comp.isdigit():
                     out_file.write(f"addi r0 {left_comp}\n")
@@ -616,7 +778,7 @@ try:
 
                 # ACC = right side
                 if right_comp in variables:
-                    out_file.write(f"load r1 {variables[right_comp]}\n")
+                    out_file.write(f"load {variables[right_comp]}\n")
                 elif right_comp.isdigit():
                     out_file.write(f"addi r0 {right_comp}\n")
                 else:
@@ -673,7 +835,7 @@ try:
                 right_backup = "r2"
 
                 if right_comp in variables:
-                    out_file.write(f"load r1 {variables[right_comp]}\n")
+                    out_file.write(f"load {variables[right_comp]}\n")
                     out_file.write(f"copy {right_backup}\n")
                 elif right_comp.isdigit():
                     out_file.write(f"addi r0 {right_comp}\n")
@@ -682,7 +844,7 @@ try:
                     raise Exception(f"Invalid comparison value '{right_comp}' on line {line_num}")
 
                 if left_comp in variables:
-                    out_file.write(f"load r1 {variables[left_comp]}\n")
+                    out_file.write(f"load {variables[left_comp]}\n")
                     out_file.write(f"copy {left_reg}\n")
                 elif left_comp.isdigit():
                     out_file.write(f"addi r0 {left_comp}\n")
@@ -737,7 +899,7 @@ try:
 
                 # Load RIGHT side into ACC, then save it into r2
                 if right_comp in variables:
-                    out_file.write(f"load r1 {variables[right_comp]}\n")
+                    out_file.write(f"load {variables[right_comp]}\n")
                     out_file.write(f"copy {right_backup}\n")
                 elif right_comp.isdigit():
                     out_file.write(f"addi r0 {right_comp}\n")
@@ -747,7 +909,7 @@ try:
 
                 # Load LEFT side into ACC, then save it into r1
                 if left_comp in variables:
-                    out_file.write(f"load r1 {variables[left_comp]}\n")
+                    out_file.write(f"load {variables[left_comp]}\n")
                     out_file.write(f"copy {left_reg}\n")
                 elif left_comp.isdigit():
                     out_file.write(f"addi r0 {left_comp}\n")
@@ -795,7 +957,7 @@ try:
 
                 # Printing variables 
                 elif fields[1] in variables:
-                    out_file.write(f"load r1 {variables[fields[1]]}\n")
+                    out_file.write(f"load {variables[fields[1]]}\n")
                     out_file.write("copy r1\n")
                     out_file.write("addi r1 0\n")
                     out_file.write("ssrf r0\n")
@@ -824,7 +986,7 @@ try:
 
                     if array_index < 0 or array_index >= length:
                         raise Exception(f"Array out of bounds at line {line_num}")
-                    out_file.write(f"load r1 {final_address}\n")
+                    out_file.write(f"load {final_address}\n")
                     out_file.write("copy r1\n")
                     out_file.write("addi r1 0\n")
                     out_file.write("ssrf r0\n")
@@ -839,7 +1001,11 @@ try:
                     out_file.write("jsr printNum\n")
                     uses_print_num = True               
                 else:
-                    out_file.write(f"tty \"{fields[1]}\"\n")
+                    tty_column = emit_tty_text(
+                        fields[1],
+                        out_file,
+                        tty_column
+                    )
 
                 continue
 
@@ -952,7 +1118,7 @@ try:
                             raise Exception(f"Array out of bounds at line {line_num}")
                             
                         out_file.write(f"; accessing array at memory location: {final_address}\n")
-                        out_file.write(f"load r0 {final_address}\n")
+                        out_file.write(f"load {final_address}\n")
                         out_file.write(f"copy {target_reg}\n")
                         stack.append(target_reg)
                         reg_num += 1
@@ -961,9 +1127,9 @@ try:
 
                 final_reg = stack.pop()
                 if access_array:
-                    out_file.write(f"store {final_reg} {final_address}\n")
+                    out_file.write(f"store {final_address}\n")
                 else:
-                    out_file.write(f"store {final_reg} {variables[fields[0]]}\n")
+                    out_file.write(f"store {variables[fields[0]]}\n")
                 continue
             if not in_asm_block and not in_func_block:
                 raise Exception(f"Unknown statement on line {line_num}: {' '.join(fields)}")
