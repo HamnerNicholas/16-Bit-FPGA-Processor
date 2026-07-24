@@ -31,6 +31,9 @@ GFX_DRAW_PORT = 19
 
 TEXT_LINE_WIDTH = 32
 
+ivt_labels = ["INT0", "INT1", "INT2", "INT3", "INT4", "INT5", "INT6", "INT7"]
+ivt_list = ["0000" for _ in range(8)]
+
 # helpers for data translation
 def parse_integer_literal(token):
     try:
@@ -405,6 +408,7 @@ try:
             if fields[0] == "let":
                 continue
 
+
             # PIXEL DRAWING
             if fields[0] == "pixel":
                 # Allows either:
@@ -592,6 +596,24 @@ try:
 
                 out_file.write(f"jsr {function_names[func_name]}\n")
                 continue
+
+                        # Interrupt Declaration
+            # interrup INT2 = function
+            if fields[0] == "interrupt":
+                if len(fields) != 4:
+                    raise Exception(
+                        f"Invalid interrupt declaration on line {line_num}. "
+                        "Expected: interrupt INT_CODE = LABEL"
+                        )
+
+                if fields[1] not in ivt_labels:
+                    raise Exception(
+                        f"{fields[1]} is not a valid interrupt code: INT0 - INT7 on line: {line_num}")
+                if fields[3] not in function_names:
+                    raise Exception(
+                        f"{fields[3]} is not a valid function name on line: {line_num}")
+
+                out_file.write(f".ivt {fields[1]} FUNC{fields[3]}")
 
             # ASSEMBLY PASS THROUGH GENERATION
             # asm = {
@@ -1131,7 +1153,7 @@ try:
                 else:
                     out_file.write(f"store {variables[fields[0]]}\n")
                 continue
-            if not in_asm_block and not in_func_block:
+            if not in_asm_block and not in_func_block and (fields[0] != "interrupt"):
                 raise Exception(f"Unknown statement on line {line_num}: {' '.join(fields)}")
             else:
                 continue
