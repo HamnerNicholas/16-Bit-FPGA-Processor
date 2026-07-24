@@ -77,9 +77,11 @@ branch_subops = {
 }
 load_subops = {
     "load": (0b00, 2, OP_IMM_STYLE, 0b110),
+    "loadio": (0b01, 2, OP_IMM_STYLE, 0b110),
 }
 store_subops = {
     "store": (0b00, 2, OP_IMM_STYLE, 0b111),
+    "storeio": (0b01, 2, OP_IMM_STYLE, 0b111),
 }
 
 directive_ops = {
@@ -161,16 +163,25 @@ def validate_instruction(field_length, op, reg, imm, line_number):
             raise Exception(f"Immediate required for '{op}' on line {line_number}")
         try:
             val = int(imm, 0)
+
         except ValueError:
             if imm in equivalents:
                 val = equivalents[imm]
+
             elif imm in labels:
-                val = labels[imm][1]
+                return
+
             else:
-                raise Exception(f"Undefined label or constant '{imm}' on line {line_number}")
+                raise Exception(
+                    f"Undefined label or constant '{imm}' "
+                    f"on line {line_number}"
+                )
 
         if not (-128 <= val <= 255):
-            raise Exception(f"Immediate value {val} (from '{imm}') out of range on line {line_number}")
+            raise Exception(
+                f"Immediate value {val} (from '{imm}') "
+                f"out of range on line {line_number}"
+            )
 
 
 def encode_instruction(imm_num, subop_num, reg_num, family_op):
@@ -369,8 +380,19 @@ try:
             section, target = labels[imm_str]
             if family_op == BRANCH_OP or family_op == SRF_OP:
                 imm_num = target - text_addr
+                if not (-128 <= imm_num <= 127):
+                    raise Exception(
+                        f"Relative jump to '{imm_str}' is out of range "
+                        f"on line {line_num}: offset {imm_num}"
+                    )
             else:
                 imm_num = target
+
+                if not (0 <= imm_num <= 255):
+                    raise Exception(
+                        f"Address of '{imm_str}' is out of range "
+                        f"on line {line_num}: address {imm_num}"
+                    )
         else:
             imm_num = int(imm_str, 0)
 
