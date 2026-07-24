@@ -6,6 +6,10 @@ module comb_ckt_generator (
     input  halt,
     input  ttyLoad,
     input  ttyALoad,
+	 input [7:0] gfxX,
+	 input [7:0] gfxY,
+	 input [7:0] gfxColor,
+	 input       gfxDraw, 
     input  [7:0] accOut,
     input  [7:0] imm,
     input  [9:0] col,
@@ -34,6 +38,9 @@ module comb_ckt_generator (
 
     // Instantiate Sequential Stream Video RAM Block
     wire [7:0] active_ascii;
+	 
+	 wire [7:0] graphics_color;
+	 
     video_vram vram_inst (
         .cpu_clk(cpu_clk),
 		  .clk_50mhz(clk_50mhz),
@@ -48,6 +55,23 @@ module comb_ckt_generator (
         .vga_read_addr(vga_vram_addr),
         .vga_char_out(active_ascii)
     );
+	 
+	 graphics_vram graphics_vram_inst (
+		 .cpu_clk(cpu_clk),
+		 .rst(rst),
+		 .halt(halt),
+
+		 .gfxDraw(gfxDraw),
+		 .gfxX(gfxX),
+		 .gfxY(gfxY),
+		 .gfxColor(gfxColor),
+
+		 .vga_clk(vga_clk),
+		 .vga_x(tile_col),
+		 .vga_y(tile_row),
+
+		 .vga_pixel_color(graphics_color)
+	);
 
     // Font Library Generator ROM
     wire [7:0] font_byte;
@@ -62,8 +86,16 @@ module comb_ckt_generator (
     wire pixel_on = font_byte[3'd7 - pixel_x] && is_inside_text_window;
 
     // Route final signals (White Text on Slate Blue Background Profile)
-    assign red   = pixel_on ? 4'hF : 4'h1;
-    assign green = pixel_on ? 4'hF : 4'h1;
-    assign blue  = pixel_on ? 4'hF : 4'h4;
+    assign red =
+		 pixel_on ? 4'hF :
+		 {graphics_color[7:5], graphics_color[7]};
+
+	assign green =
+		 pixel_on ? 4'hF :
+		 {graphics_color[4:2], graphics_color[4]};
+
+	assign blue =
+		 pixel_on ? 4'hF :
+		 {graphics_color[1:0], graphics_color[1:0]};
 
 endmodule
