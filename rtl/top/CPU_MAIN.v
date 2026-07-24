@@ -44,6 +44,15 @@ module CPU_MAIN #(
     wire RALoad, RAReturn, LoadJalRegisters, ReadJalRegisters;
     wire ttyLoad, ttyALoad, halt;
     wire COPYSTD, RINT;
+	 
+	 // Load/store subop control lines
+	 wire storeGlobal;
+	 wire storeIO;
+	 wire loadDecode;
+
+ 	 // Datapath wires
+    wire [DATA_WIDTH-1:0] ioOut;
+	 
 
     // Datapath wires
     wire [DATA_WIDTH-1:0] accOut;
@@ -62,12 +71,17 @@ module CPU_MAIN #(
 	 
 	 wire [7:0] display_debug;
 	 
+	 wire [DATA_WIDTH - 1:0] gfxX;
+	 wire [DATA_WIDTH - 1:0] gfxY;
+	 wire [DATA_WIDTH - 1:0] gfxColor;
+	 wire                  gfxDraw;
+	 
 	 CLOCK_DIVIDER #(
-			 .DIVIDER(1_000_000)
+    .DIVIDER(1)
 		) divider (
-			 .clk(MAX10_CLK1_50),
-
-			 .slow_clk(cpu_clk)
+			 .clk      (MAX10_CLK1_50),
+			 .rst      (rst),
+			 .slow_clk (cpu_clk)
 		);
 
     // Instruction RAM / decoder
@@ -123,6 +137,23 @@ module CPU_MAIN #(
         .COPYSTD(COPYSTD),
         .RINT(RINT)
     );
+	 
+	 STORE_SUBOP_CONTROL #(
+		  .SUBOP_WIDTH(SUBOP_WIDTH)
+	 ) store_subop_control_inst (
+		  .store(store),
+		  .SubopField(SubopField),
+		  .storeGlobal(storeGlobal),
+		  .storeIO(storeIO)
+	 );
+
+  	 LOAD_SUBOP_CONTROL #(
+		  .SUBOP_WIDTH(SUBOP_WIDTH)
+	 ) load_subop_control_inst (
+		  .load(load),
+		  .SubopField(SubopField),
+		  .loadDecode(loadDecode)
+	 );
 
     PC #(
         .WIDTH(ADDR_WIDTH),
@@ -161,20 +192,22 @@ module CPU_MAIN #(
     );
 
     ACCUMULATOR_REGISTER #(
-        .REG_WIDTH(DATA_WIDTH)
-    ) accumulator_inst (
-        .clk(cpu_clk),
-        .halt(halt),
-        .rst(rst),
-        .ALUI(ALUI),
-        .ALU(ALU),
-        .load(load),
-        .ReadJalRegisters(ReadJalRegisters),
-        .ALUOut(ALUOut),
-        .globalOut(globalOut),
-        .JALRegOut(JALRegOut),
-        .accOut(accOut)
-    );
+		 .REG_WIDTH(DATA_WIDTH)
+	 ) accumulator_inst (
+		 .clk(cpu_clk),
+		 .halt(halt),
+		 .rst(rst),
+		 .ALUI(ALUI),
+		 .ALU(ALU),
+		 .load(load),
+		 .loadDecode(loadDecode),
+		 .ReadJalRegisters(ReadJalRegisters),
+		 .ALUOut(ALUOut),
+		 .globalOut(globalOut),
+		 .ioOut(ioOut),
+		 .JALRegOut(JALRegOut),
+		 .accOut(accOut)
+	 );
 
     REGISTER_FILE #(
         .REG_WIDTH(DATA_WIDTH),
@@ -216,16 +249,34 @@ module CPU_MAIN #(
     );
 
     GLOBAL_MEMORY #(
-        .WIDTH(DATA_WIDTH),
-        .ADDR_WIDTH(IMM_WIDTH)
-    ) global_memory_inst (
-        .clk(cpu_clk),
-        .halt(halt),
-        .store(store),
-        .imm(imm),
-        .accOut(accOut),
-        .globalOut(globalOut)
-    );
+		 .WIDTH(DATA_WIDTH),
+		 .ADDR_WIDTH(IMM_WIDTH)
+	) global_memory_inst (
+		 .clk(cpu_clk),
+		 .halt(halt),
+		 .storeGlobal(storeGlobal),
+		 .imm(imm),
+		 .accOut(accOut),
+		 .globalOut(globalOut)
+	);
+	
+	IO_MEMORY #(
+		 .WIDTH(DATA_WIDTH),
+		 .ADDR_WIDTH(IMM_WIDTH)
+	) io_memory_inst (
+		 .clk(cpu_clk),
+		 .halt(halt),
+		 .rst(rst),
+		 .storeIO(storeIO),
+		 .imm(imm),
+		 .accOut(accOut),
+		 .ioOut(ioOut),
+
+		 .gfxX(gfxX),
+		 .gfxY(gfxY),
+		 .gfxColor(gfxColor),
+		 .gfxDraw(gfxDraw)
+	);
 
     ISR_CONTROL #(
         .ADDR_WIDTH(ADDR_WIDTH),
@@ -256,7 +307,7 @@ module CPU_MAIN #(
         .HEX1(HEX1)
     );
 	 
-	assign LEDR = accOut;
+	assign LEDR = gfxColor;
 	
 	// VGA STUFF
 	wire [31:0]    col, row;
@@ -287,7 +338,11 @@ module CPU_MAIN #(
 		.row       (row[8:0]),        // Active vertical pixel position
 		.red       (red),             // Output Red video pins
 		.green     (green),           // Output Green video pins
-		.blue      (blue)             // Output Blue video pins
+		.blue      (blue),            // Output Blue video pins
+		.gfxX(gfxX),
+		.gfxY(gfxY),
+		.gfxColor(gfxColor),
+		.gfxDraw(gfxDraw)
 	);
 	//============================================================================
 	// Display-related and PLL stuff. Don't touch!
@@ -317,7 +372,7 @@ module CPU_MAIN #(
 	// Instantite VGA controller
 	vga_controller control (
 		.pixel_clk  (vga_clk),
-		.reset_n    (~rst),
+		.reset_n    (1'b1),
 		.h_sync     (h_sync),
 		.v_sync     (v_sync),
 		.disp_ena   (disp_ena),
